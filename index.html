@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kinetix - Modern Systems Language</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Abstract Background -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Kinetix</div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="https://github.com/MisterY3515/Kinetix" target="_blank">Repository</a>
+                <a href="https://mistery3515.github.io/Kinetix-Documentation/" target="_blank"
+                    class="nav-btn">Documentation</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="badge">v0.0.7 (Build 19) Released</div>
+            <h1 class="hero-title">Kinetix</h1>
+            <p class="hero-subtitle">Zero Garbage Collection. Canonical SSA. Linear Ownership and Reactive Core.</p>
+
+            <div class="cta-group">
+                <a href="https://mistery3515.github.io/Kinetix-Documentation/" target="_blank" class="btn btn-primary">
+                    <span class="btn-text">Esplora la Documentazione</span>
+                    <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </a>
+                <a href="https://github.com/MisterY3515/Kinetix" target="_blank" class="btn btn-secondary">
+                    View on GitHub
+                </a>
+            </div>
+        </div>
+
+        <!-- Code Showcase -->
+        <div class="code-showcase" id="mockup">
+            <div class="window-header">
+                <div class="dots">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                </div>
+                <div class="title">main.kicomp</div>
+            </div>
+            <div class="window-body">
+                <pre><code><span class="keyword">class</span> <span class="datatype">Counter</span> {
+    <span class="keyword">state</span> count: <span class="datatype">int</span> = <span class="number">0</span>
+
+    <span class="keyword">fn</span> <span class="function">increment</span>(&<span class="keyword">mut</span> self) {
+        self.count = self.count + <span class="number">1</span>
+    }
+}
+
+<span class="keyword">fn</span> <span class="function">main</span>() {
+    <span class="keyword">let</span> <span class="keyword">mut</span> c = Counter { count: <span class="number">0</span> }
+    
+    <span class="keyword">effect</span> [c.count] {
+        println(<span class="string">"Count changed to: "</span> + c.count)
+    }
+
+    c.<span class="function">increment</span>() <span class="comment">// Triggers effect implicitly</span>
+}</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="section-title">
+            <h2>Built for Predictability</h2>
+            <p>Engineered to guarantee determinism without sacrificing high-level expressive power.</p>
+        </div>
+
+        <div class="feature-grid">
+
+            <div class="feature-card glass">
+                <div class="feature-icon">🛡️</div>
+                <h3>Linear Ownership</h3>
+                <p>Strict AST-based borrow validation. Say goodbye to race conditions and hidden aliases during
+                    compile-time without complex lifetimes.</p>
+            </div>
+
+            <div class="feature-card glass">
+                <div class="feature-icon">⚡</div>
+                <h3>Reactive Graph</h3>
+                <p>A native frame scheduler built right into the Virtual Machine. State mutations trigger zero-overhead
+                    cached effects via topological sort.</p>
+            </div>
+
+            <div class="feature-card glass">
+                <div class="feature-icon">🔒</div>
+                <h3>Capability IR</h3>
+                <p>Sandbox Enforcement at compile level. Functions inherently declare side-effects. Network and FS
+                    access checked before the bytecode is even emitted.</p>
+            </div>
+
+            <div class="feature-card glass">
+                <div class="feature-icon">🚀</div>
+                <h3>Zero GC</h3>
+                <p>Deterministic Drop Order Verification and LLVM native bridging. Predictable performance scaling
+                    strictly O(n) under load.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">Kinetix</div>
+            <p>© 2026 Nevhar Project. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
