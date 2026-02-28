@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Install Kinetix</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Page-specific styles */
+        .install-page {
+            max-width: 900px;
+            margin: 8rem auto 4rem;
+            padding: 0 2rem;
+        }
+
+        .install-page .page-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #FFF 0%, #A0B0D0 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .install-page .page-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+            margin-bottom: 3rem;
+        }
+
+        .notice-box {
+            background: rgba(255, 189, 46, 0.08);
+            border: 1px solid rgba(255, 189, 46, 0.25);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .notice-box .notice-icon {
+            font-size: 1.4rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .notice-box p {
+            color: #FFBD2E;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .platform-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(16px);
+            border-radius: 16px;
+            padding: 2rem 2.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s ease;
+        }
+
+        .platform-card:hover {
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .platform-card .platform-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 1.25rem;
+        }
+
+        .platform-card .platform-icon {
+            font-size: 2rem;
+        }
+
+        .platform-card .platform-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #FFF;
+        }
+
+        .platform-card .platform-tag {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            margin-left: auto;
+        }
+
+        .tag-recommended {
+            background: rgba(39, 201, 63, 0.15);
+            color: #27C93F;
+            border: 1px solid rgba(39, 201, 63, 0.3);
+        }
+
+        .tag-source {
+            background: rgba(0, 240, 255, 0.1);
+            color: var(--accent-blue);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+        }
+
+        .tag-planned {
+            background: rgba(139, 155, 180, 0.1);
+            color: var(--text-secondary);
+            border: 1px solid rgba(139, 155, 180, 0.2);
+        }
+
+        .platform-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .platform-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .install-steps {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0 0;
+        }
+
+        .install-steps li {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 14px;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .install-steps li::before {
+            content: attr(data-step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--accent-blue);
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .install-steps li code {
+            background: rgba(255, 255, 255, 0.06);
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: #C9D1D9;
+        }
+
+        .code-block {
+            background: #0D0D14;
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+
+        .code-block code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.88rem;
+            color: #C9D1D9;
+            white-space: pre;
+        }
+
+        .requirements-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .req-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            padding: 1rem;
+        }
+
+        .req-item .req-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .req-item .req-value {
+            color: #FFF;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.85rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            margin-top: 0.5rem;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+            color: #FFF;
+            border: none;
+            box-shadow: 0 8px 24px rgba(112, 0, 255, 0.25);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(0, 240, 255, 0.35);
+        }
+
+        .section-divider {
+            border: none;
+            border-top: 1px solid var(--glass-border);
+            margin: 3rem 0;
+        }
+
+        @media (max-width: 600px) {
+            .install-page .page-title {
+                font-size: 2rem;
+            }
+
+            .platform-card {
+                padding: 1.5rem;
+            }
+
+            .platform-card .platform-header {
+                flex-wrap: wrap;
+            }
+
+            .platform-card .platform-tag {
+                margin-left: 0;
+            }
+
+            .requirements-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Abstract Background -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo.png" alt="Kinetix Logo" class="logo-img">
+                <a href="index.html" class="logo-text" style="text-decoration:none;">Kinetix</a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html#features" data-en="Features" data-it="Caratteristiche">Features</a>
+                <a href="index.html#roadmap" data-en="Roadmap" data-it="Roadmap">Roadmap</a>
+                <a href="install.html" style="color: var(--accent-blue);" data-en="Install"
+                    data-it="Installazione">Install</a>
+                <a href="https://github.com/MisterY3515/Kinetix" target="_blank" data-en="Repository"
+                    data-it="Repository">Repository</a>
+                <a href="https://mistery3515.github.io/Kinetix-Documentation/" target="_blank" class="nav-btn"
+                    data-en="Documentation" data-it="Documentazione">Documentation</a>
+
+                <div class="lang-switch">
+                    <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
+                    <span>|</span>
+                    <button id="btn-it" onclick="setLang('it')">IT</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="install-page">
+
+            <h1 class="page-title" data-en="Install Kinetix" data-it="Installa Kinetix">Install Kinetix</h1>
+            <p class="page-subtitle" data-en="Get started with Kinetix on your platform of choice."
+                data-it="Inizia con Kinetix sulla tua piattaforma preferita.">
+                Get started with Kinetix on your platform of choice.
+            </p>
+
+            <!-- Notice -->
+            <div class="notice-box">
+                <span class="notice-icon">⚠️</span>
+                <p data-en="Kinetix is in active <strong>Pre-Release</strong> development. The official installer uploaded to GitHub Releases is currently the <strong>Windows build only</strong>, for convenience due to the frequent release of new builds. Linux and macOS users can build from source following the instructions below."
+                    data-it="Kinetix è in fase attiva di sviluppo <strong>Pre-Release</strong>. L'installer ufficiale caricato nelle Release di GitHub è attualmente solo per <strong>Windows</strong>, per praticità data la frequente pubblicazione di nuove build. Gli utenti Linux e macOS possono compilare dai sorgenti seguendo le istruzioni qui sotto.">
+                    Kinetix is in active <strong>Pre-Release</strong> development. The official installer uploaded to
+                    GitHub Releases is currently the <strong>Windows build only</strong>, for convenience due to the
+                    frequent release of new builds. Linux and macOS users can build from source following the
+                    instructions below.
+                </p>
+            </div>
+
+            <!-- ====== WINDOWS ====== -->
+            <div class="platform-card">
+                <div class="platform-header">
+                    <span class="platform-icon">🪟</span>
+                    <span class="platform-name">Windows</span>
+                    <span class="platform-tag tag-recommended" data-en="Recommended"
+                        data-it="Consigliato">Recommended</span>
+                </div>
+                <p data-en="The easiest way to install Kinetix. Download the official installer from the latest GitHub Release and run it."
+                    data-it="Il modo più semplice per installare Kinetix. Scarica l'installer ufficiale dall'ultima Release su GitHub e avvialo.">
+                    The easiest way to install Kinetix. Download the official installer from the latest GitHub Release
+                    and run it.
+                </p>
+                <ol class="install-steps">
+                    <li data-step="1."
+                        data-en="Download <code>KinetixInstaller.exe</code> from the latest <a href='https://github.com/MisterY3515/Kinetix/releases' target='_blank' style='color:var(--accent-blue)'>GitHub Release</a>."
+                        data-it="Scarica <code>KinetixInstaller.exe</code> dall'ultima <a href='https://github.com/MisterY3515/Kinetix/releases' target='_blank' style='color:var(--accent-blue)'>Release su GitHub</a>.">
+                        Download <code>KinetixInstaller.exe</code> from the latest <a
+                            href="https://github.com/MisterY3515/Kinetix/releases" target="_blank"
+                            style="color:var(--accent-blue)">GitHub Release</a>.
+                    </li>
+                    <li data-step="2." data-en="Run the installer. It will guide you through the setup process."
+                        data-it="Avvia l'installer. Ti guiderà attraverso il processo di installazione.">
+                        Run the installer. It will guide you through the setup process.
+                    </li>
+                    <li data-step="3." data-en="Once installed, open a terminal and verify with:"
+                        data-it="Una volta installato, apri un terminale e verifica con:">
+                        Once installed, open a terminal and verify with:
+                    </li>
+                </ol>
+                <div class="code-block"><code>kinetix --version</code></div>
+
+                <h4 style="color: #FFF; margin-top: 1.5rem; margin-bottom: 0.75rem;" data-en="System Requirements"
+                    data-it="Requisiti di Sistema">System Requirements</h4>
+                <div class="requirements-grid">
+                    <div class="req-item">
+                        <div class="req-label">OS</div>
+                        <div class="req-value">Windows 10+ (x64)</div>
+                    </div>
+                    <div class="req-item">
+                        <div class="req-label" data-en="Disk Space" data-it="Spazio Disco">Disk Space</div>
+                        <div class="req-value">~150 MB</div>
+                    </div>
+                </div>
+
+                <a href="https://github.com/MisterY3515/Kinetix/releases" target="_blank" class="download-btn"
+                    style="margin-top: 1.5rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+                        <polyline points="7 10 12 15 17 10" />
+                        <line x1="12" y1="15" x2="12" y2="3" />
+                    </svg>
+                    <span data-en="Download for Windows" data-it="Scarica per Windows">Download for Windows</span>
+                </a>
+            </div>
+
+            <!-- ====== LINUX ====== -->
+            <div class="platform-card">
+                <div class="platform-header">
+                    <span class="platform-icon">🐧</span>
+                    <span class="platform-name">Linux</span>
+                    <span class="platform-tag tag-source" data-en="Build from Source"
+                        data-it="Compilazione dai Sorgenti">Build from Source</span>
+                </div>
+                <p data-en="Build Kinetix from source using the Rust toolchain. Requires <code>cargo</code> and <code>LLVM 17+</code> libraries installed on your system."
+                    data-it="Compila Kinetix dai sorgenti usando la toolchain Rust. Richiede <code>cargo</code> e le librerie <code>LLVM 17+</code> installate nel sistema.">
+                    Build Kinetix from source using the Rust toolchain. Requires <code>cargo</code> and
+                    <code>LLVM 17+</code> libraries installed on your system.
+                </p>
+                <ol class="install-steps">
+                    <li data-step="1." data-en="Install prerequisites:" data-it="Installa i prerequisiti:">
+                        Install prerequisites:
+                    </li>
+                </ol>
+                <div class="code-block"><code># Debian / Ubuntu
+sudo apt update && sudo apt install -y build-essential llvm-17-dev libclang-17-dev curl
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+# Fedora / RHEL
+sudo dnf install -y llvm17-devel clang17-devel
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh</code></div>
+                <ol class="install-steps" start="2">
+                    <li data-step="2." data-en="Clone and build:" data-it="Clona e compila:">
+                        Clone and build:
+                    </li>
+                </ol>
+                <div class="code-block"><code>git clone https://github.com/MisterY3515/Kinetix.git
+cd Kinetix
+cargo build --release</code></div>
+                <ol class="install-steps" start="3">
+                    <li data-step="3." data-en="Add to your PATH (optional):"
+                        data-it="Aggiungi al tuo PATH (opzionale):">
+                        Add to your PATH (optional):
+                    </li>
+                </ol>
+                <div class="code-block"><code>sudo cp target/release/kinetix /usr/local/bin/
+kinetix --version</code></div>
+
+                <h4 style="color: #FFF; margin-top: 1.5rem; margin-bottom: 0.75rem;" data-en="System Requirements"
+                    data-it="Requisiti di Sistema">System Requirements</h4>
+                <div class="requirements-grid">
+                    <div class="req-item">
+                        <div class="req-label">OS</div>
+                        <div class="req-value">Ubuntu 20.04+ / Fedora 36+</div>
+                    </div>
+                    <div class="req-item">
+                        <div class="req-label">Toolchain</div>
+                        <div class="req-value">Rust 1.75+, LLVM 17+</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ====== macOS ====== -->
+            <div class="platform-card">
+                <div class="platform-header">
+                    <span class="platform-icon">🍎</span>
+                    <span class="platform-name">macOS</span>
+                    <span class="platform-tag tag-source" data-en="Build from Source"
+                        data-it="Compilazione dai Sorgenti">Build from Source</span>
+                </div>
+                <p data-en="Build Kinetix using Homebrew to install the required dependencies and the Rust toolchain."
+                    data-it="Compila Kinetix usando Homebrew per installare le dipendenze e la toolchain Rust.">
+                    Build Kinetix using Homebrew to install the required dependencies and the Rust toolchain.
+                </p>
+                <ol class="install-steps">
+                    <li data-step="1." data-en="Install prerequisites via Homebrew:"
+                        data-it="Installa i prerequisiti tramite Homebrew:">
+                        Install prerequisites via Homebrew:
+                    </li>
+                </ol>
+                <div class="code-block"><code>brew install llvm@17
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh</code></div>
+                <ol class="install-steps" start="2">
+                    <li data-step="2." data-en="Clone and build:" data-it="Clona e compila:">
+                        Clone and build:
+                    </li>
+                </ol>
+                <div class="code-block"><code>git clone https://github.com/MisterY3515/Kinetix.git
+cd Kinetix
+export LLVM_SYS_170_PREFIX=$(brew --prefix llvm@17)
+cargo build --release</code></div>
+                <ol class="install-steps" start="3">
+                    <li data-step="3." data-en="Add to your PATH (optional):"
+                        data-it="Aggiungi al tuo PATH (opzionale):">
+                        Add to your PATH (optional):
+                    </li>
+                </ol>
+                <div class="code-block"><code>sudo cp target/release/kinetix /usr/local/bin/
+kinetix --version</code></div>
+
+                <h4 style="color: #FFF; margin-top: 1.5rem; margin-bottom: 0.75rem;" data-en="System Requirements"
+                    data-it="Requisiti di Sistema">System Requirements</h4>
+                <div class="requirements-grid">
+                    <div class="req-item">
+                        <div class="req-label">OS</div>
+                        <div class="req-value">macOS 12+ (Intel / Apple Silicon)</div>
+                    </div>
+                    <div class="req-item">
+                        <div class="req-label">Toolchain</div>
+                        <div class="req-value">Rust 1.75+, LLVM 17+</div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="section-divider">
+
+            <!-- ====== FUTURE PLATFORMS ====== -->
+            <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1.5rem; color: #FFF;"
+                data-en="Future Platforms" data-it="Piattaforme Future">Future Platforms</h2>
+
+            <div class="platform-card" style="opacity: 0.6;">
+                <div class="platform-header">
+                    <span class="platform-icon">📱</span>
+                    <span class="platform-name" data-en="Android & iOS" data-it="Android & iOS">Android & iOS</span>
+                    <span class="platform-tag tag-planned" data-en="Phase 9" data-it="Fase 9">Phase 9</span>
+                </div>
+                <p data-en="Native mobile targets are planned for Phase 9 of the roadmap, including Android (aarch64) via NDK and iOS (arm64) via Metal/LLVM AOT compilation."
+                    data-it="I target nativi mobile sono pianificati per la Fase 9 della roadmap, includendo Android (aarch64) via NDK e iOS (arm64) via compilazione Metal/LLVM AOT.">
+                    Native mobile targets are planned for Phase 9 of the roadmap, including Android (aarch64) via NDK
+                    and iOS (arm64) via Metal/LLVM AOT compilation.
+                </p>
+            </div>
+
+            <div class="platform-card" style="opacity: 0.6;">
+                <div class="platform-header">
+                    <span class="platform-icon">🌐</span>
+                    <span class="platform-name">WebAssembly (WASM)</span>
+                    <span class="platform-tag tag-planned" data-en="Phase 9" data-it="Fase 9">Phase 9</span>
+                </div>
+                <p data-en="WASM compilation target with a capability-sandboxed runtime is planned for Phase 9, enabling Kinetix programs to run in the browser."
+                    data-it="Il target di compilazione WASM con runtime capability-sandboxed è pianificato per la Fase 9, permettendo l'esecuzione dei programmi Kinetix nel browser.">
+                    WASM compilation target with a capability-sandboxed runtime is planned for Phase 9, enabling Kinetix
+                    programs to run in the browser.
+                </p>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="logo.png" alt="Logo" class="logo-img"
+                    style="height:24px; vertical-align:middle; margin-right:8px;">Kinetix
+            </div>
+            <p data-en="© 2026 MisterY3515. All rights reserved."
+                data-it="© 2026 MisterY3515. Tutti i diritti riservati.">© 2026 MisterY3515. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
