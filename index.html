@@ -23,12 +23,22 @@
     <!-- Navbar -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">Kinetix</div>
+            <div class="logo">
+                <img src="logo.png" alt="Kinetix Logo" class="logo-img">
+                <span class="logo-text">Kinetix</span>
+            </div>
             <div class="nav-links">
-                <a href="#features">Features</a>
-                <a href="https://github.com/MisterY3515/Kinetix" target="_blank">Repository</a>
-                <a href="https://mistery3515.github.io/Kinetix-Documentation/" target="_blank"
-                    class="nav-btn">Documentation</a>
+                <a href="#features" data-en="Features" data-it="Caratteristiche">Features</a>
+                <a href="https://github.com/MisterY3515/Kinetix" target="_blank" data-en="Repository"
+                    data-it="Repository">Repository</a>
+                <a href="https://mistery3515.github.io/Kinetix-Documentation/" target="_blank" class="nav-btn"
+                    data-en="Documentation" data-it="Documentazione">Documentation</a>
+
+                <div class="lang-switch">
+                    <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
+                    <span>|</span>
+                    <button id="btn-it" onclick="setLang('it')">IT</button>
+                </div>
             </div>
         </div>
     </nav>
@@ -44,20 +54,25 @@
             </div>
 
             <h1 class="hero-title">Kinetix</h1>
-            <p class="hero-subtitle">Un linguaggio di programmazione di sistema, compilato e tipizzato staticamente.
-                Progetto sperimentale e accademico realizzato da uno studente con l'assistenza avanzata
-                dell'Intelligenza Artificiale.</p>
+            <p class="hero-subtitle"
+                data-en="A compiled, statically typed systems programming language. An experimental project developed by a student with the advanced assistance of Artificial Intelligence."
+                data-it="Un linguaggio di programmazione di sistema, compilato e tipizzato staticamente. Progetto sperimentale realizzato da uno studente con l'assistenza avanzata dell'Intelligenza Artificiale.">
+                A compiled, statically typed systems programming language. An experimental project developed by a
+                student with the advanced assistance of Artificial Intelligence.
+            </p>
 
             <div class="cta-group">
                 <a href="https://mistery3515.github.io/Kinetix-Documentation/" target="_blank" class="btn btn-primary">
-                    <span class="btn-text">Esplora la Documentazione</span>
+                    <span class="btn-text" data-en="Explore Documentation" data-it="Esplora la Documentazione">Explore
+                        Documentation</span>
                     <svg class="btn-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M5 12h14M12 5l7 7-7 7" />
                     </svg>
                 </a>
-                <a href="https://github.com/MisterY3515/Kinetix" target="_blank" class="btn btn-secondary">
+                <a href="https://github.com/MisterY3515/Kinetix" target="_blank" class="btn btn-secondary"
+                    data-en="View on GitHub" data-it="Vedi su GitHub">
                     View on GitHub
                 </a>
             </div>
@@ -71,7 +86,7 @@
                     <span class="dot yellow"></span>
                     <span class="dot green"></span>
                 </div>
-                <div class="title">main.kicomp</div>
+                <div class="title">main.kix</div>
             </div>
             <div class="window-body">
                 <pre><code><span class="keyword">class</span> <span class="datatype">Counter</span> {
@@ -98,8 +113,11 @@
     <!-- Features Section -->
     <section id="features" class="features-section">
         <div class="section-title">
-            <h2>Built for Predictability</h2>
-            <p>Engineered to guarantee determinism without sacrificing high-level expressive power.</p>
+            <h2 data-en="Built for Predictability" data-it="Costruito per la Prevedibilità">Built for Predictability
+            </h2>
+            <p data-en="Engineered to guarantee determinism without sacrificing high-level expressive power."
+                data-it="Progettato per garantire determinismo senza sacrificare il potere espressivo di alto livello.">
+                Engineered to guarantee determinism without sacrificing high-level expressive power.</p>
         </div>
 
         <div class="feature-grid">
@@ -107,28 +125,36 @@
             <div class="feature-card glass">
                 <div class="feature-icon">🛡️</div>
                 <h3>Linear Ownership</h3>
-                <p>Strict AST-based borrow validation. Say goodbye to race conditions and hidden aliases during
+                <p data-en="Strict AST-based borrow validation. Say goodbye to race conditions and hidden aliases during compile-time without complex lifetimes."
+                    data-it="Validazione prestiti basata su AST. Addio race conditions e alias nascosti in fase di compilazione, senza lifetimes complessi.">
+                    Strict AST-based borrow validation. Say goodbye to race conditions and hidden aliases during
                     compile-time without complex lifetimes.</p>
             </div>
 
             <div class="feature-card glass">
                 <div class="feature-icon">⚡</div>
                 <h3>Reactive Graph</h3>
-                <p>A native frame scheduler built right into the Virtual Machine. State mutations trigger zero-overhead
+                <p data-en="A native frame scheduler built right into the Virtual Machine. State mutations trigger zero-overhead cached effects via topological sort."
+                    data-it="Frame scheduler nativo nella Virtual Machine. Le mutazioni di stato innescano effetti in cache a zero overhead tramite ordine topologico.">
+                    A native frame scheduler built right into the Virtual Machine. State mutations trigger zero-overhead
                     cached effects via topological sort.</p>
             </div>
 
             <div class="feature-card glass">
                 <div class="feature-icon">🔒</div>
                 <h3>Capability IR</h3>
-                <p>Sandbox Enforcement at compile level. Functions inherently declare side-effects. Network and FS
+                <p data-en="Sandbox Enforcement at compile level. Functions inherently declare side-effects. Network and FS access checked before the bytecode is emitted."
+                    data-it="Applicazione sandbox a livello di compilazione. Accessi a rete o FS verificati prima ancora di emettere il bytecode.">
+                    Sandbox Enforcement at compile level. Functions inherently declare side-effects. Network and FS
                     access checked before the bytecode is even emitted.</p>
             </div>
 
             <div class="feature-card glass">
                 <div class="feature-icon">🚀</div>
                 <h3>Zero GC</h3>
-                <p>Deterministic Drop Order Verification and LLVM native bridging. Predictable performance scaling
+                <p data-en="Deterministic Drop Order Verification and LLVM native bridging. Predictable performance scaling strictly O(n) under load."
+                    data-it="Verifica deallocazione deterministica e bridge LLVM. Performance scalabili in rigido ordine O(n) sotto sforzo senza lag gc.">
+                    Deterministic Drop Order Verification and LLVM native bridging. Predictable performance scaling
                     strictly O(n) under load.</p>
             </div>
 
@@ -138,15 +164,17 @@
     <!-- Progress & Roadmap Section -->
     <section id="roadmap" class="progress-section">
         <div class="section-title">
-            <h2>Project Status</h2>
-            <p>Il percorso di Kinetix verso una base stabile e solida.</p>
+            <h2 data-en="Project Status" data-it="Stato Progetto">Project Status</h2>
+            <p data-en="Kinetix's path towards a stable and solid foundation."
+                data-it="Il percorso di Kinetix verso una base stabile e solida.">Il percorso di Kinetix verso una base
+                stabile e solida.</p>
         </div>
 
         <div class="roadmap-grid">
 
             <!-- Completion Stats -->
             <div class="completion-stats glass-panel">
-                <h3>Global Completion</h3>
+                <h3 data-en="Global Completion" data-it="Completamento Globale">Global Completion</h3>
 
                 <div class="progress-item">
                     <div class="progress-header">
@@ -201,19 +229,34 @@
 
             <!-- Simplified Roadmap list -->
             <div class="simplified-roadmap glass-panel">
-                <h3>Milestones</h3>
+                <h3 data-en="Milestones" data-it="Traguardi">Milestones</h3>
                 <ul class="milestone-list">
-                    <li class="done"><strong>[V] Phase 0 & 1:</strong> Memory Model & Formale HM Inference, Bytecode VM
+                    <li class="done"
+                        data-en="<strong>[V] Phase 0 & 1:</strong> Memory Model & Formal HM Inference, Bytecode VM and LLVM Native generation matching 1:1."
+                        data-it="<strong>[V] Phase 0 & 1:</strong> Modello di Memoria & Inferenza HM formale, VM Bytecode e LLVM matching nativo 1:1.">
+                        <strong>[V] Phase 0 & 1:</strong> Memory Model & Formale HM Inference, Bytecode VM
                         e LLVM Native generation in match 1:1.</li>
-                    <li class="done"><strong>[V] Phase 2:</strong> Monomorphization sicura, Pattern Matching Exhaustive
+                    <li class="done"
+                        data-en="<strong>[V] Phase 2:</strong> Safe Monomorphization, Exhaustive Pattern Matching and Safe Option/Result handling."
+                        data-it="<strong>[V] Phase 2:</strong> Monomorfizzazione sicura, Pattern Matching Esaustivo e Option/Result Safe.">
+                        <strong>[V] Phase 2:</strong> Monomorphization sicura, Pattern Matching Exhaustive
                         e Safe Option/Result handling.</li>
-                    <li class="active"><strong>[~] Phase 3:</strong> VTable Method Dispatch, Reactive Engine nativo
+                    <li class="active"
+                        data-en="<strong>[~] Phase 3:</strong> VTable Method Dispatch, Native Reactive Engine (State-Computed-Effect), and Structs. <em>(Currently in Build 20)</em>"
+                        data-it="<strong>[~] Phase 3:</strong> VTable Dispatch, Motore Reattivo nativo, Strutture Lineari. <em>(Build 20)</em>">
+                        <strong>[~] Phase 3:</strong> VTable Method Dispatch, Reactive Engine nativo
                         (State-Computed-Effect), e Struct linearizzazione. <em>(Attualmente in Build 20)</em></li>
-                    <li><strong>[ ] Phase 4:</strong> Shell, System & Capability OS Abstraction Level integrato per
+                    <li data-en="<strong>[ ] Phase 4:</strong> Shell, System & Capability OS Abstraction Level integrated for global scripting."
+                        data-it="<strong>[ ] Phase 4:</strong> Livello Astrazione Shell e Sistema (Capability OS) per scripting avanzato.">
+                        <strong>[ ] Phase 4:</strong> Shell, System & Capability OS Abstraction Level integrato per
                         scripting globale.</li>
-                    <li><strong>[ ] Phase 5:</strong> Memory & Threads, Lock-Free Concurrency, Send/Sync Bounds per
+                    <li data-en="<strong>[ ] Phase 5:</strong> Memory & Threads, Lock-Free Concurrency, Send/Sync Bounds for parallelism."
+                        data-it="<strong>[ ] Phase 5:</strong> Concorrenza senza lock, Send/Sync e Parallelismo massivo nativo.">
+                        <strong>[ ] Phase 5:</strong> Memory & Threads, Lock-Free Concurrency, Send/Sync Bounds per
                         parallelismo.</li>
-                    <li><strong>[ ] Future:</strong> Kinetix Web Framework, Build System nativo, DB ORM ed Ecosistema
+                    <li data-en="<strong>[ ] Future:</strong> Kinetix Web Framework, Native Build System, DB ORM and Hub Ecosystem."
+                        data-it="<strong>[ ] Futuro:</strong> Framework Web Kinetix, Build System nativo, DB ORM e Hub Globale.">
+                        <strong>[ ] Future:</strong> Kinetix Web Framework, Build System nativo, DB ORM ed Ecosistema
                         Kinetix Hub.</li>
                 </ul>
             </div>
@@ -223,8 +266,12 @@
 
     <footer>
         <div class="footer-content">
-            <div class="footer-logo">Kinetix</div>
-            <p>© 2026 MisterY3515. All rights reserved.</p>
+            <div class="footer-logo">
+                <img src="logo.png" alt="Logo" class="logo-img"
+                    style="height:24px; vertical-align:middle; margin-right:8px;">Kinetix
+            </div>
+            <p data-en="© 2026 MisterY3515. All rights reserved."
+                data-it="© 2026 MisterY3515. Tutti i diritti riservati.">© 2026 MisterY3515. All rights reserved.</p>
         </div>
     </footer>
 

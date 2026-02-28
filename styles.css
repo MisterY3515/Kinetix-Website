@@ -87,6 +87,19 @@ body {
 }
 
 .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-img {
+    height: 32px;
+    width: auto;
+    border-radius: 4px;
+    /* nel caso il logo avesse spigoli vivi */
+}
+
+.logo-text {
     font-weight: 800;
     font-size: 1.5rem;
     letter-spacing: -0.5px;
@@ -125,6 +138,41 @@ body {
 .nav-btn:hover {
     background: rgba(255, 255, 255, 0.1);
     box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+}
+
+/* Language Switcher */
+.lang-switch {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 1rem;
+    padding-left: 1rem;
+    border-left: 1px solid var(--glass-border);
+}
+
+.lang-switch button {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.lang-switch button:hover {
+    color: #FFF;
+}
+
+.lang-switch button.active {
+    color: var(--accent-blue);
+    text-shadow: 0 0 8px rgba(0, 240, 255, 0.4);
+}
+
+.lang-switch span {
+    color: var(--glass-border);
+    font-size: 0.9rem;
 }
 
 /* Hero Section */

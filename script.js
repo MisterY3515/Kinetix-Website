@@ -33,3 +33,21 @@ if (mockupWindow) {
         mockupWindow.style.transition = 'transform 0.5s ease-in-out';
     });
 }
+
+// Localization Logic
+function setLang(lang) {
+    // Update active button state
+    document.getElementById('btn-en').classList.remove('active');
+    document.getElementById('btn-it').classList.remove('active');
+    document.getElementById('btn-' + lang).classList.add('active');
+
+    // Find all translatable elements
+    const translatableElements = document.querySelectorAll('[data-en][data-it]');
+
+    // Update text content with innerHTML to preserve markdown/HTML tags inside translations
+    translatableElements.forEach(el => {
+        if (el.dataset[lang]) {
+            el.innerHTML = el.dataset[lang];
+        }
+    });
+}
