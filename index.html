@@ -36,9 +36,17 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <div class="badge">v0.0.7 (Build 19) Released</div>
+            <div class="badges-row" style="display: flex; gap: 0.8rem; margin-bottom: 1.5rem;">
+                <div class="badge">v0.0.7 (Build 19) Released</div>
+                <div class="badge warning-badge"
+                    style="color: #FFBD2E; border-color: rgba(255, 189, 46, 0.3); background: rgba(255, 189, 46, 0.1);">
+                    Pre-Release</div>
+            </div>
+
             <h1 class="hero-title">Kinetix</h1>
-            <p class="hero-subtitle">Zero Garbage Collection. Canonical SSA. Linear Ownership and Reactive Core.</p>
+            <p class="hero-subtitle">Un linguaggio di programmazione di sistema, compilato e tipizzato staticamente.
+                Progetto sperimentale e accademico realizzato da uno studente con l'assistenza avanzata
+                dell'Intelligenza Artificiale.</p>
 
             <div class="cta-group">
                 <a href="https://mistery3515.github.io/Kinetix-Documentation/" target="_blank" class="btn btn-primary">
@@ -127,10 +135,96 @@
         </div>
     </section>
 
+    <!-- Progress & Roadmap Section -->
+    <section id="roadmap" class="progress-section">
+        <div class="section-title">
+            <h2>Project Status</h2>
+            <p>Il percorso di Kinetix verso una base stabile e solida.</p>
+        </div>
+
+        <div class="roadmap-grid">
+
+            <!-- Completion Stats -->
+            <div class="completion-stats glass-panel">
+                <h3>Global Completion</h3>
+
+                <div class="progress-item">
+                    <div class="progress-header">
+                        <span>Phase 0: Formal Core & Memory</span>
+                        <span class="pct">100%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill fill-100"></div>
+                    </div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-header">
+                        <span>Phase 1: Compiler & Borrow System</span>
+                        <span class="pct">100%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill fill-100"></div>
+                    </div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-header">
+                        <span>Phase 2: Types & Nominals Traits</span>
+                        <span class="pct">100%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill fill-100"></div>
+                    </div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-header">
+                        <span>Phase 3: OOP & Reactive Engine</span>
+                        <span class="pct">85%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill fill-85"></div>
+                    </div>
+                </div>
+
+                <div class="progress-item">
+                    <div class="progress-header">
+                        <span>Phase 4+: Sandbox & High-Level API</span>
+                        <span class="pct">15%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill fill-15"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Simplified Roadmap list -->
+            <div class="simplified-roadmap glass-panel">
+                <h3>Milestones</h3>
+                <ul class="milestone-list">
+                    <li class="done"><strong>[V] Phase 0 & 1:</strong> Memory Model & Formale HM Inference, Bytecode VM
+                        e LLVM Native generation in match 1:1.</li>
+                    <li class="done"><strong>[V] Phase 2:</strong> Monomorphization sicura, Pattern Matching Exhaustive
+                        e Safe Option/Result handling.</li>
+                    <li class="active"><strong>[~] Phase 3:</strong> VTable Method Dispatch, Reactive Engine nativo
+                        (State-Computed-Effect), e Struct linearizzazione. <em>(Attualmente in Build 20)</em></li>
+                    <li><strong>[ ] Phase 4:</strong> Shell, System & Capability OS Abstraction Level integrato per
+                        scripting globale.</li>
+                    <li><strong>[ ] Phase 5:</strong> Memory & Threads, Lock-Free Concurrency, Send/Sync Bounds per
+                        parallelismo.</li>
+                    <li><strong>[ ] Future:</strong> Kinetix Web Framework, Build System nativo, DB ORM ed Ecosistema
+                        Kinetix Hub.</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
     <footer>
         <div class="footer-content">
             <div class="footer-logo">Kinetix</div>
-            <p>© 2026 Nevhar Project. All rights reserved.</p>
+            <p>© 2026 MisterY3515. All rights reserved.</p>
         </div>
     </footer>
 

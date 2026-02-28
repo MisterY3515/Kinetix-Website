@@ -92,6 +92,7 @@ body {
     letter-spacing: -0.5px;
     background: linear-gradient(90deg, #FFF, var(--accent-blue));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -162,6 +163,7 @@ body {
     margin-bottom: 1.5rem;
     background: linear-gradient(135deg, #FFF 0%, #A0B0D0 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -319,6 +321,7 @@ body {
     margin-bottom: 1rem;
     background: linear-gradient(90deg, #FFF, #8B9BB4);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -364,6 +367,150 @@ body {
 .feature-card p {
     color: var(--text-secondary);
     font-size: 0.95rem;
+}
+
+/* Progress & Roadmap Section */
+.progress-section {
+    max-width: 1200px;
+    margin: 0 auto 10rem;
+    padding: 0 2rem;
+}
+
+.roadmap-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+.glass-panel {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(16px);
+    border-radius: 16px;
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.glass-panel h3 {
+    font-size: 1.5rem;
+    color: #FFF;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 1rem;
+}
+
+/* Progress Bars */
+.progress-item {
+    margin-bottom: 1.5rem;
+}
+
+.progress-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.progress-header .pct {
+    color: var(--accent-blue);
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-purple), var(--accent-blue));
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+    transition: width 1s ease-in-out;
+}
+
+.fill-100 {
+    width: 100%;
+    background: linear-gradient(90deg, #27C93F, #00F0FF);
+}
+
+.fill-85 {
+    width: 85%;
+}
+
+.fill-15 {
+    width: 15%;
+    background: linear-gradient(90deg, #FF5F56, var(--accent-purple));
+}
+
+/* Milestones List */
+.milestone-list {
+    list-style: none;
+    padding: 0;
+}
+
+.milestone-list li {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.milestone-list li strong {
+    color: #FFF;
+}
+
+.milestone-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid var(--text-secondary);
+    background: var(--bg-color);
+}
+
+.milestone-list li::after {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 20px;
+    width: 2px;
+    height: calc(100% - 10px);
+    background: var(--glass-border);
+}
+
+.milestone-list li:last-child::after {
+    display: none;
+}
+
+.milestone-list li.done {
+    color: #C9D1D9;
+}
+
+.milestone-list li.done::before {
+    border-color: #27C93F;
+    background: #27C93F;
+    box-shadow: 0 0 10px rgba(39, 201, 63, 0.4);
+}
+
+.milestone-list li.active {
+    color: #FFF;
+}
+
+.milestone-list li.active::before {
+    border-color: var(--accent-blue);
+    background: var(--accent-blue);
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.6);
 }
 
 /* Footer */
