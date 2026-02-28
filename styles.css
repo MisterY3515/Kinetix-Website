@@ -795,4 +795,160 @@ footer p {
     .logo-text {
         font-size: 1.2rem;
     }
+
+    .section-title h2 {
+        font-size: 1.8rem;
+    }
+
+    .section-title p {
+        font-size: 0.95rem;
+    }
+
+    .glass-panel {
+        padding: 1.5rem;
+    }
+
+    .glass-panel h3 {
+        font-size: 1.25rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .feature-card {
+        padding: 1.5rem;
+    }
+
+    .progress-header {
+        font-size: 0.85rem;
+        flex-wrap: wrap;
+    }
+
+    .milestone-list li {
+        font-size: 0.88rem;
+        padding-left: 1.6rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .milestone-sublist li {
+        font-size: 0.82rem;
+        padding-left: 22px;
+    }
+
+    .expandable-item summary {
+        font-size: 0.88rem;
+        padding-right: 18px;
+    }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+    .hero {
+        margin-top: 6.5rem;
+        padding: 0 1rem;
+    }
+
+    .hero-title {
+        font-size: 2.2rem;
+        letter-spacing: -1px;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .badges-row {
+        flex-wrap: wrap;
+    }
+
+    .badge {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.8rem;
+    }
+
+    .code-showcase {
+        border-radius: 8px;
+    }
+
+    .window-body {
+        padding: 1rem;
+    }
+
+    .window-body pre {
+        font-size: 0.75rem;
+    }
+
+    .features-section,
+    .progress-section {
+        padding: 0 1rem;
+        margin-bottom: 5rem;
+    }
+
+    .section-title h2 {
+        font-size: 1.5rem;
+    }
+
+    .glass-panel {
+        padding: 1.25rem;
+        border-radius: 12px;
+    }
+
+    .glass-panel h3 {
+        font-size: 1.1rem;
+        margin-bottom: 1.25rem;
+        padding-bottom: 0.75rem;
+    }
+
+    .progress-header {
+        font-size: 0.8rem;
+    }
+
+    .progress-item {
+        margin-bottom: 1rem;
+    }
+
+    .milestone-list li {
+        font-size: 0.82rem;
+        padding-left: 1.4rem;
+        margin-bottom: 1rem;
+    }
+
+    .milestone-list li::before {
+        width: 8px;
+        height: 8px;
+        top: 5px;
+    }
+
+    .milestone-list li::after {
+        left: 3px;
+        top: 17px;
+    }
+
+    .milestone-sublist {
+        padding-left: 0.5rem;
+    }
+
+    .milestone-sublist li {
+        font-size: 0.78rem;
+        padding-left: 20px;
+    }
+
+    footer {
+        padding: 2rem 1rem;
+    }
+
+    .footer-logo {
+        font-size: 1.1rem;
+    }
+
+    footer p {
+        font-size: 0.8rem;
+    }
+
+    .cta-group .btn {
+        padding: 0.8rem 1.2rem;
+        font-size: 0.9rem;
+    }
 }
