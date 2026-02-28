@@ -26,6 +26,9 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Background Blobs */
@@ -567,6 +570,7 @@ footer {
     padding: 3rem 0;
     text-align: center;
     background: rgba(5, 5, 10, 0.8);
+    margin-top: auto;
 }
 
 .footer-logo {
@@ -595,6 +599,13 @@ footer p {
 
     .cta-group {
         justify-content: center;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .cta-group .btn {
+        width: 100%;
+        justify-content: center;
     }
 
     .hero-title {
@@ -604,5 +615,13 @@ footer p {
     .nav-links {
         display: none;
         /* simple mobile pattern without hamburger for now */
+    }
+
+    .roadmap-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .logo-text {
+        font-size: 1.2rem;
     }
 }
