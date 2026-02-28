@@ -31,6 +31,12 @@ body {
     flex-direction: column;
 }
 
+.main-content {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
 /* Background Blobs */
 .blob {
     position: absolute;
@@ -602,17 +608,37 @@ body {
 }
 
 .milestone-sublist li {
-    padding-left: 0;
+    padding-left: 24px;
     margin-bottom: 8px;
     font-size: 0.9rem;
     color: var(--text-secondary);
-    list-style-type: disc;
-    list-style-position: inside;
+    list-style: none;
+    /* Rimuove pallino interno */
+    position: relative;
 }
 
-.milestone-list .milestone-sublist li::before,
 .milestone-list .milestone-sublist li::after {
     display: none;
+}
+
+.milestone-list .milestone-sublist li::before {
+    content: '⏳';
+    /* Icona WIP task di base */
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: inline-block;
+    width: auto;
+    height: auto;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    font-size: 0.95rem;
+}
+
+.milestone-list .milestone-sublist li.sub-done::before {
+    content: '✅';
+    /* Override Icona Completed task */
 }
 
 .milestone-sublist li.sub-done {
