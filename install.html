@@ -300,7 +300,10 @@
                 <img src="logo.png" alt="Kinetix Logo" class="logo-img">
                 <a href="index.html" class="logo-text" style="text-decoration:none;">Kinetix</a>
             </div>
-            <div class="nav-links">
+            <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMobileMenu()">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="nav-links" id="nav-links">
                 <a href="index.html#features" data-en="Features" data-it="Caratteristiche">Features</a>
                 <a href="index.html#roadmap" data-en="Roadmap" data-it="Roadmap">Roadmap</a>
                 <a href="install.html" style="color: var(--accent-blue);" data-en="Install"
@@ -318,6 +321,7 @@
             </div>
         </div>
     </nav>
+    <div class="nav-overlay" id="nav-overlay" onclick="toggleMobileMenu()"></div>
 
     <!-- Main Content -->
     <main class="main-content">

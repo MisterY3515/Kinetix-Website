@@ -51,3 +51,28 @@ function setLang(lang) {
         }
     });
 }
+
+// Mobile Hamburger Menu Toggle
+function toggleMobileMenu() {
+    const nav = document.getElementById('nav-links');
+    const hamburger = document.getElementById('hamburger');
+    const overlay = document.getElementById('nav-overlay');
+    if (nav) nav.classList.toggle('open');
+    if (hamburger) hamburger.classList.toggle('open');
+    if (overlay) overlay.classList.toggle('open');
+}
+
+// Close mobile menu when a link is clicked
+document.addEventListener('DOMContentLoaded', () => {
+    const navLinks = document.querySelectorAll('.nav-links a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            const nav = document.getElementById('nav-links');
+            const hamburger = document.getElementById('hamburger');
+            const overlay = document.getElementById('nav-overlay');
+            if (nav) nav.classList.remove('open');
+            if (hamburger) hamburger.classList.remove('open');
+            if (overlay) overlay.classList.remove('open');
+        });
+    });
+});

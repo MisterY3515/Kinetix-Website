@@ -27,7 +27,10 @@
                 <img src="logo.png" alt="Kinetix Logo" class="logo-img">
                 <span class="logo-text">Kinetix</span>
             </div>
-            <div class="nav-links">
+            <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMobileMenu()">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="nav-links" id="nav-links">
                 <a href="#features" data-en="Features" data-it="Caratteristiche">Features</a>
                 <a href="#roadmap" data-en="Roadmap" data-it="Roadmap">Roadmap</a>
                 <a href="install.html" data-en="Install" data-it="Installazione">Install</a>
@@ -44,6 +47,7 @@
             </div>
         </div>
     </nav>
+    <div class="nav-overlay" id="nav-overlay" onclick="toggleMobileMenu()"></div>
 
     <!-- Main Content Wrapper to fix footer sticking -->
     <main class="main-content">
