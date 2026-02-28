@@ -206,24 +206,77 @@
                         <div class="progress-fill fill-100"></div>
                     </div>
                 </div>
-
+                <!-- Phase 3 -->
                 <div class="progress-item">
                     <div class="progress-header">
-                        <span>Phase 3: OOP & Reactive Engine</span>
-                        <span class="pct">85%</span>
+                        <span data-en="Phase 3: OOP & Reactive Engine (WIP)"
+                            data-it="Fase 3: OOP & Motore Reattivo (In Sviluppo)">Phase 3: OOP & Reactive Engine
+                            (WIP)</span>
+                        <span>85%</span>
                     </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill fill-85"></div>
+                    <div class="progress-track">
+                        <div class="progress-fill pulse" style="width: 85%;"></div>
                     </div>
                 </div>
 
-                <div class="progress-item">
+                <!-- Phase 4 -->
+                <div class="progress-item" style="opacity: 0.6;">
                     <div class="progress-header">
-                        <span>Phase 4+: Sandbox & High-Level API</span>
-                        <span class="pct">15%</span>
+                        <span data-en="Phase 4: Capability OS Abstraction"
+                            data-it="Fase 4: Astrazione Sistema Capability">Phase 4: Capability OS Abstraction</span>
+                        <span>0%</span>
                     </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill fill-15"></div>
+                    <div class="progress-track">
+                        <div class="progress-fill" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+                <!-- Phase 5 -->
+                <div class="progress-item" style="opacity: 0.5;">
+                    <div class="progress-header">
+                        <span data-en="Phase 5: Ecosystem & Networking" data-it="Fase 5: Ecosistema & Networking">Phase
+                            5: Ecosystem & Networking</span>
+                        <span>0%</span>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-fill" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+                <!-- Phase 6 -->
+                <div class="progress-item" style="opacity: 0.4;">
+                    <div class="progress-header">
+                        <span data-en="Phase 6: Multimedia Native" data-it="Fase 6: Multimedialità Nativa">Phase 6:
+                            Multimedia Native</span>
+                        <span>0%</span>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-fill" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+                <!-- Phase 7 -->
+                <div class="progress-item" style="opacity: 0.3;">
+                    <div class="progress-header">
+                        <span data-en="Phase 7: Full Stress Audit" data-it="Fase 7: Revisione e Stress Globale">Phase 7:
+                            Full Stress Audit</span>
+                        <span>0%</span>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-fill" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+                <!-- Phase 8 & 9 -->
+                <div class="progress-item" style="opacity: 0.2;">
+                    <div class="progress-header">
+                        <span data-en="Phase 8 & 9: Native UI, Mobile & WASM"
+                            data-it="Fase 8 e 9: Componenti UI, Mobile e WASM">Phase 8 & 9: Native UI, Mobile &
+                            WASM</span>
+                        <span>0%</span>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-fill" style="width: 0%;"></div>
                     </div>
                 </div>
             </div>
@@ -232,36 +285,154 @@
             <div class="simplified-roadmap glass-panel">
                 <h3 data-en="Milestones" data-it="Traguardi">Milestones</h3>
                 <ul class="milestone-list">
-                    <li class="done"
-                        data-en="<strong>[V] Phase 0 & 1:</strong> Memory Model & Formal HM Inference, Bytecode VM and Native LLVM Match."
-                        data-it="<strong>[V] Phase 0 & 1:</strong> Modello di Memoria & Inferenza HM formale, Match Nativo VM Bytecode e LLVM.">
-                        <strong>[V] Phase 0 & 1:</strong> Memory Model & Formal HM Inference, Bytecode VM and Native
-                        LLVM Match.</li>
 
-                    <li class="done"
-                        data-en="<strong>[V] Phase 2:</strong> Safe Monomorphization, Exhaustive Pattern Matching and Safe Option/Result."
-                        data-it="<strong>[V] Phase 2:</strong> Monomorfizzazione sicura, Pattern Matching Esaustivo e Option/Result Safe.">
-                        <strong>[V] Phase 2:</strong> Safe Monomorphization, Exhaustive Pattern Matching and Safe
-                        Option/Result.</li>
+                    <li class="done expandable-item">
+                        <details>
+                            <summary
+                                data-en="<strong>[V] Phase 0 & 1:</strong> Memory Model, Formal HM Inference & Bytecode VM."
+                                data-it="<strong>[V] Phase 0 & 1:</strong> Modello di Memoria, Inferenza HM formale e Bytecode VM.">
+                                <strong>[V] Phase 0 & 1:</strong> Memory Model, Formal HM Inference & Bytecode VM.
+                            </summary>
+                            <ul class="milestone-sublist">
+                                <li data-en="Complete EBNF Syntax & Lexer" data-it="Sintassi EBNF e Lexer completati">
+                                    Complete EBNF Syntax & Lexer</li>
+                                <li data-en="Linear Types & Move Semantics implementation"
+                                    data-it="Tipi Lineari e Semantica Muovi (Move)">Linear Types & Move Semantics
+                                    implementation</li>
+                                <li data-en="16-bit Bytecode VM architecture"
+                                    data-it="Architettura VM Bytecode a 16-bit">16-bit Bytecode VM architecture</li>
+                                <li data-en="Formal Type Inference (Hindley-Milner scope)"
+                                    data-it="Inferenza Tipi Formale (Ambito Hindley-Milner)">Formal Type Inference
+                                    (Hindley-Milner scope)</li>
+                                <li data-en="Differential Testing VM vs LLVM Native generation"
+                                    data-it="Generazione e test differenziale VM contro LLVM">Differential Testing VM vs
+                                    LLVM Native generation</li>
+                            </ul>
+                        </details>
+                    </li>
 
-                    <li class="active"
-                        data-en="<strong>[~] Phase 3 (Build 20):</strong> VTable Dispatch, Native Reactive Engine, Linear Structs."
-                        data-it="<strong>[~] Phase 3 (Build 20):</strong> VTable Dispatch, Motore Reattivo Nativo, Strutture Lineari.">
-                        <strong>[~] Phase 3 (Build 20):</strong> VTable Dispatch, Native Reactive Engine, Linear
-                        Structs.</li>
+                    <li class="done expandable-item">
+                        <details>
+                            <summary
+                                data-en="<strong>[V] Phase 2:</strong> Safe Monomorphization, Exhaustive Pattern Matching."
+                                data-it="<strong>[V] Phase 2:</strong> Monomorfizzazione Sicura e Pattern Matching Esaustivo.">
+                                <strong>[V] Phase 2:</strong> Safe Monomorphization, Exhaustive Pattern Matching.
+                            </summary>
+                            <ul class="milestone-sublist">
+                                <li data-en="Safe Option&lt;T&gt; & Result&lt;T,E&gt; enforcing"
+                                    data-it="Obbligo risoluzione sicura Option&lt;T&gt; & Result&lt;T,E&gt;">Safe
+                                    Option&lt;T&gt; & Result&lt;T,E&gt; enforcing</li>
+                                <li data-en="Nominal Trait Constraint Resolution"
+                                    data-it="Risoluzione Nominal Trait Constraint">Nominal Trait Constraint Resolution
+                                </li>
+                                <li data-en="Compile-Time Drop Order Verification"
+                                    data-it="Verifica e Ordine Costante 'Drop' in Compilazione">Compile-Time Drop Order
+                                    Verification</li>
+                                <li data-en="Exhaustiveness Checker Matrix Algorithm"
+                                    data-it="Algoritmo a matrice Checker Esaustività">Exhaustiveness Checker Matrix
+                                    Algorithm</li>
+                                <li data-en="Strict Post-Monomorphization Structural validation"
+                                    data-it="Validazione strutturale rigorosa post-Monomorfizzazione">Strict
+                                    Post-Monomorphization Structural validation</li>
+                            </ul>
+                        </details>
+                    </li>
 
-                    <li data-en="<strong>[ ] Phase 4:</strong> Shell, System & Capability OS Abstraction Layer."
-                        data-it="<strong>[ ] Phase 4:</strong> Livello Astrazione Shell, Sistema e Sistema Capability OS.">
-                        <strong>[ ] Phase 4:</strong> Shell, System & Capability OS Abstraction Layer.</li>
+                    <li class="active expandable-item">
+                        <details open>
+                            <summary
+                                data-en="<strong>[~] Phase 3:</strong> VTable Dispatch, Native Reactive Engine & Structs. <em>(Current)</em>"
+                                data-it="<strong>[~] Phase 3:</strong> VTable Dispatch, Motore Reattivo Nativo & Strutture. <em>(Attuale)</em>">
+                                <strong>[~] Phase 3:</strong> VTable Dispatch, Native Reactive Engine & Structs.
+                                <em>(Current)</em></summary>
+                            <ul class="milestone-sublist">
+                                <li class="sub-done" data-en="Linear Classes & Structs MVP compilation"
+                                    data-it="Linear Classes & Struct MVP in compilazione">Linear Classes & Structs MVP
+                                    compilation</li>
+                                <li class="sub-done" data-en="Reactive Dag (State-Computed-Effect) topological sort"
+                                    data-it="Supporto Dag Reattivo (State-Computed-Effect)">Reactive Dag
+                                    (State-Computed-Effect) topological sort</li>
+                                <li class="sub-done" data-en="OOP Method Dispatch and VM Runtime hooks"
+                                    data-it="OOP Method Dispatch e hooks Runtime VM">OOP Method Dispatch and VM Runtime
+                                    hooks</li>
+                                <li class="sub-done" data-en="Capability IR Sandbox verification (Build 19)"
+                                    data-it="Verifica Capability IR per la Sandbox (Build 19)">Capability IR Sandbox
+                                    verification (Build 19)</li>
+                                <li data-en="Static VTable Dispatch pre-SSA" data-it="Dispaccio Statico VTable pre-SSA">
+                                    Static VTable Dispatch pre-SSA</li>
+                            </ul>
+                        </details>
+                    </li>
 
-                    <li data-en="<strong>[ ] Phase 5:</strong> Ecosystem, Async Net, Data FS, Integrated LSP Server & Compiler Optimization."
-                        data-it="<strong>[ ] Phase 5:</strong> Ecosistema, Reti Asincrone, FS, Server LSP Integrato e Ottimizzazione Compilatore.">
-                        <strong>[ ] Phase 5:</strong> Ecosystem, Async Net, Data FS, Integrated LSP Server & Compiler
-                        Optimization.</li>
+                    <li class="expandable-item">
+                        <details>
+                            <summary
+                                data-en="<strong>[ ] Phase 4:</strong> Shell, System & Capability OS Abstraction Layer."
+                                data-it="<strong>[ ] Phase 4:</strong> Livello Astrazione Shell, Sistema e Sistema Capability OS.">
+                                <strong>[ ] Phase 4:</strong> Shell, System & Capability OS Abstraction Layer.</summary>
+                            <ul class="milestone-sublist">
+                                <li data-en="OS Abstraction Layer (system.*)" data-it="Strato Astrazione SO (system.*)">
+                                    OS Abstraction Layer (system.*)</li>
+                                <li data-en="Syscall Mapping Table zero-runtime overhead"
+                                    data-it="Limitazione Overhead con Mapping Statico Syscall">Syscall Mapping Table
+                                    zero-runtime overhead</li>
+                                <li data-en="Holy-Shell style optional parens"
+                                    data-it="Sintassi parens opzionali stile Holy-Shell">Holy-Shell style optional
+                                    parens</li>
+                                <li data-en="System Module Security under Sandbox rules"
+                                    data-it="Isolazione Modulo SO tramite regole Sandbox">System Module Security under
+                                    Sandbox rules</li>
+                            </ul>
+                        </details>
+                    </li>
 
-                    <li data-en="<strong>[ ] Phase 6:</strong> Multimedia (Buffered Audio Stream, Graph Deprecation)."
-                        data-it="<strong>[ ] Phase 6:</strong> Multimedia (Riproduzione Audio tamponata, deprecazione pacchetto grafico base).">
-                        <strong>[ ] Phase 6:</strong> Multimedia (Buffered Audio Stream, Graph Deprecation).</li>
+                    <li class="expandable-item">
+                        <details>
+                            <summary
+                                data-en="<strong>[ ] Phase 5:</strong> Ecosystem, Net, Data FS & Compiler Optimization."
+                                data-it="<strong>[ ] Phase 5:</strong> Ecosistema, Net, Data FS e Ottimizzazione Compilazione.">
+                                <strong>[ ] Phase 5:</strong> Ecosystem, Net, Data FS & Compiler Optimization.</summary>
+                            <ul class="milestone-sublist">
+                                <li data-en="Networking module (Async Sockets, HTTP, TLS)"
+                                    data-it="Networking stack completo (Socket Asincroni, HTTP, TLS)">Networking module
+                                    (Async Sockets, HTTP, TLS)</li>
+                                <li data-en="Filesystem abstraction module with Path safety"
+                                    data-it="Filesystem stack con controlli di sicurezza path traversal">Filesystem
+                                    abstraction module with Path safety</li>
+                                <li data-en="Integrated LSP Server processing directly on HIR graph"
+                                    data-it="Integra Server LSP funzionante nativamente su grafo HIR">Integrated LSP
+                                    Server processing directly on HIR graph</li>
+                                <li data-en="Compiler Passes (Dead Code, Constants, Math Folding)"
+                                    data-it="Implementazione Dead Code Elimination e Math Folding">Compiler Passes (Dead
+                                    Code, Constants, Math Folding)</li>
+                                <li data-en="Offline Package Manager & extended native Linker"
+                                    data-it="Manager dei pacchetti offline e Linker binari esteso">Offline Package
+                                    Manager & extended native Linker</li>
+                            </ul>
+                        </details>
+                    </li>
+
+                    <li class="expandable-item">
+                        <details>
+                            <summary data-en="<strong>[ ] Phase 6:</strong> Multimedia (Buffered Audio Stream)."
+                                data-it="<strong>[ ] Phase 6:</strong> Multimedialità (Audio Stream Buffering).">
+                                <strong>[ ] Phase 6:</strong> Multimedia (Buffered Audio Stream).</summary>
+                            <ul class="milestone-sublist">
+                                <li data-en="Non-blocking Buffered Audio Stream framework"
+                                    data-it="Framework streaming Audio Multi-threading Non-blocking">Non-blocking
+                                    Buffered Audio Stream framework</li>
+                                <li data-en="Complete deprecation and removal of old graph lib"
+                                    data-it="Rimozione totale vecchia libreria sperimentale 'graph'">Complete
+                                    deprecation and removal of old graph lib</li>
+                                <li data-en="FFI Safety Layer enforcement boundaries"
+                                    data-it="Superfici di delimitazione FFI Safety">FFI Safety Layer enforcement
+                                    boundaries</li>
+                                <li data-en="Strict internal rendering coordinates abstraction"
+                                    data-it="Astrazione interna delle logiche matematiche e griglia">Strict internal
+                                    rendering coordinates abstraction</li>
+                            </ul>
+                        </details>
+                    </li>
 
                     <li data-en="<strong>[ ] Phase 7:</strong> Full Stress Validation, Fuzzy Tests & Performance Global Audit."
                         data-it="<strong>[ ] Phase 7:</strong> Validazione Stress Globale, Fuzzing e Audit globale delle performance.">
@@ -279,7 +450,6 @@
                     </li>
                 </ul>
             </div>
-
         </div>
     </section>
 

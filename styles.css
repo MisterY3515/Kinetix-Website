@@ -564,6 +564,61 @@ body {
     box-shadow: 0 0 10px rgba(0, 240, 255, 0.6);
 }
 
+/* Expandable Milestone Details */
+.expandable-item details {
+    cursor: pointer;
+}
+
+.expandable-item summary {
+    outline: none;
+    list-style: none;
+    position: relative;
+    padding-right: 20px;
+}
+
+.expandable-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.expandable-item summary::after {
+    content: '▼';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+    transition: transform 0.2s ease;
+    font-size: 0.8rem;
+    color: var(--accent-blue);
+}
+
+.expandable-item details[open] summary::after {
+    transform: translateY(-50%) rotate(0);
+}
+
+.milestone-sublist {
+    margin-top: 14px;
+    padding-left: 1rem;
+    color: var(--text-secondary);
+}
+
+.milestone-sublist li {
+    padding-left: 0;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    list-style-type: disc;
+    list-style-position: inside;
+}
+
+.milestone-list .milestone-sublist li::before,
+.milestone-list .milestone-sublist li::after {
+    display: none;
+}
+
+.milestone-sublist li.sub-done {
+    color: #C9D1D9;
+}
+
 /* Footer */
 footer {
     border-top: 1px solid var(--glass-border);
