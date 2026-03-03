@@ -527,7 +527,8 @@ body {
 
 .fill-100 {
     width: 100%;
-    background: linear-gradient(90deg, #27C93F, #00F0FF);
+    background: #27C93F;
+    box-shadow: 0 0 10px rgba(39, 201, 63, 0.4);
 }
 
 .fill-85 {
