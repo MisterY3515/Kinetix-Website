@@ -75,4 +75,25 @@ document.addEventListener('DOMContentLoaded', () => {
             if (overlay) overlay.classList.remove('open');
         });
     });
+
+    renderChangelog();
 });
+
+// Render Changelog
+function renderChangelog() {
+    const container = document.getElementById('changelog-container');
+    if (!container || !window.App || !window.App.changelog) return;
+
+    let html = '';
+    App.changelog.forEach(release => {
+        html += `<div class="release-card" style="margin-bottom: 24px; padding: 20px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px;">
+            <h3 style="margin-top: 0; color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 8px; margin-bottom: 16px;">
+                ${release.version} <span style="float: right; font-size: 0.85em; color: var(--text-light);">${release.date}</span>
+            </h3>
+            <ul style="padding-left: 20px;">
+                ${release.changes.map(c => `<li style="margin-bottom: 8px;">${c}</li>`).join('')}
+            </ul>
+        </div>`;
+    });
+    container.innerHTML = html;
+}
