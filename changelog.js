@@ -1,5 +1,15 @@
 App.changelog = [
     {
+        version: "v0.0.9 (34)",
+        date: "2026-03-06",
+        changes: [
+            "<b>LSP Server (HM-powered):</b> Integrated a full Language Server Protocol server into <code>kicomp</code> (<code>lsp.rs</code>). Handles JSON-RPC messages via stdin/stdout for real-time editor integration.",
+            "<b>Real-Time Diagnostics:</b> The LSP performs Lexer, Parser, Symbol Resolution and HM Type Checking on every <code>textDocument/didChange</code> event, publishing <code>textDocument/publishDiagnostics</code> with syntax and semantic errors.",
+            "<b>CLI Integration:</b> Added <code>kivm lsp</code> subcommand to start the LSP server, enabling direct integration with VS Code, Neovim, and other LSP-compatible editors.",
+            "<b>Documentation Refresh:</b> Updated <code>docs.md</code>, <code>cli.js</code>, and internal function documentation to reflect Build 33 features (.kicomp system, init/build/start commands, Package Manager)."
+        ]
+    },
+    {
         version: "v0.0.9 (33)",
         date: "2026-03-05",
         changes: [
