@@ -1,5 +1,15 @@
 App.changelog = [
     {
+        version: "v0.0.9 (33)",
+        date: "2026-03-05",
+        changes: [
+            "<b>.kicomp Project System:</b> Implemented the full <code>.kicomp</code> project file parser (<code>project.rs</code>). Supports project metadata (name, version, author), entry point, output target (kivm/native), optimization level, dependencies, and sandbox permissions.",
+            "<b>Offline Package Manager:</b> Added dependency resolver (<code>resolver.rs</code>) with topological sort, cycle detection, and local path dependency support. Modules are combined into a single compilation unit.",
+            "<b>New CLI Commands:</b> <code>kivm init</code> scaffolds a new project (project.kicomp + src/main.kix). <code>kivm build</code> compiles a project. <code>kivm start</code> compiles and runs a project.",
+            "<b>Sandbox-Driven Capabilities:</b> The <code>CapabilityValidator</code> now derives permissions from the <code>sandbox</code> section of .kicomp files instead of hardcoding all capabilities. Dev mode (<code>kivm exec</code>) retains full access for backward compatibility."
+        ]
+    },
+    {
         version: "v0.0.9 (32)",
         date: "2026-03-04",
         changes: [
