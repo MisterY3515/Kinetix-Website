@@ -1,5 +1,15 @@
 App.changelog = [
     {
+        version: "v0.0.9 (35)",
+        date: "2026-03-07",
+        changes: [
+            "<b>Compiler Optimization Passes (Bytecode):</b> Added <code>opt.rs</code> implementation for dead code elimination, constant folding, constant propagation, redundant load elimination, Nop elimination, jump threading, and copy elision 2.0. Reduces KiVM instruction footprint.",
+            "<b>MIR Optimization Passes:</b> Added <code>mir_opt.rs</code> for Control Flow Simplification (merge single-pred blocks, remove empty Goto blocks) and Drop Redundancy cleanup.",
+            "<b>Extended Linker (.exki v2):</b> The bundle linker now supports the Extended Format <code>kivm-bytecode-v2</code> which embeds an <code>optimized</code> manifest flag and compile version tracking for runtime awareness.",
+            "<b>Metrics Tracker & CLI Flags:</b> Introduced <code>--metrics</code> flag to track instruction count delta and execution time. Introduced <code>--no-opt</code> to bypass bytecode passes completely."
+        ]
+    },
+    {
         version: "v0.0.9 (34)",
         date: "2026-03-06",
         changes: [
