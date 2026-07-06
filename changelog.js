@@ -1,5 +1,16 @@
 App.changelog = [
     {
+        version: "v0.0.9 (36)",
+        date: "2026-03-08",
+        changes: [
+            "<b>Real Bytecode for Enum, Trait &amp; Match:</b> <code>enum</code>, <code>match</code>, and <code>impl</code> blocks now compile to real, executable bytecode instead of silently emitting <code>LoadNull</code> as a placeholder. <code>if</code>-as-expression also now generates real bytecode.",
+            "<b>Assignment Parser Fix:</b> Fixed a bug where <code>obj.field = x</code> and <code>arr[i] = x</code> were never actually compiled (silently dropped).",
+            "<b>Interactive Shell (<code>kivm shell</code>):</b> Real line-editing — command history with the arrow keys, Ctrl+C cancels the current line without killing the shell, Ctrl+X/Ctrl+Y cut/paste, Ctrl+Z undo. Replaces the previous raw-stdin input loop.",
+            "<b>macOS:</b> Fixed a bug where double-clicking or \"Open With\" on a <code>.kix</code>/<code>.exki</code> file opened an empty shell instead of running the file.",
+            "<b>Build & Distribution:</b> Prebuilt installers now available for Linux (x86_64 + ARM64) and macOS (Universal) in addition to Windows (x86_64 + ARM64) — first release with multi-platform binaries."
+        ]
+    },
+    {
         version: "v0.0.9 (35)",
         date: "2026-03-07",
         changes: [
