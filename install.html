@@ -102,12 +102,6 @@
             border: 1px solid rgba(39, 201, 63, 0.3);
         }
 
-        .tag-source {
-            background: rgba(0, 240, 255, 0.1);
-            color: var(--cyan);
-            border: 1px solid rgba(0, 240, 255, 0.2);
-        }
-
         .tag-planned {
             background: rgba(139, 155, 180, 0.1);
             color: var(--muted);
@@ -273,6 +267,24 @@
             color: var(--ink);
         }
 
+        .source-toggle {
+            margin-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            padding-top: 1.25rem;
+        }
+
+        .source-toggle summary {
+            font-weight: 600;
+            color: var(--ink);
+            font-size: 1rem;
+        }
+
+        .source-toggle .install-steps,
+        .source-toggle .requirements-grid,
+        .source-toggle>p {
+            margin-top: 1rem;
+        }
+
         @media (max-width: 600px) {
             .install-page .page-title {
                 font-size: 2rem;
@@ -342,12 +354,13 @@
             <!-- Notice -->
             <div class="notice-box">
                 <span class="notice-icon">⚠️</span>
-                <p data-en="Kinetix is in active <strong>Pre-Release</strong> development. The official installer uploaded to GitHub Releases is currently the <strong>Windows build only</strong>, for convenience due to the frequent release of new builds. Linux and macOS users can build from source following the instructions below."
-                    data-it="Kinetix è in fase attiva di sviluppo <strong>Pre-Release</strong>. L'installer ufficiale caricato nelle Release di GitHub è attualmente solo per <strong>Windows</strong>, per praticità data la frequente pubblicazione di nuove build. Gli utenti Linux e macOS possono compilare dai sorgenti seguendo le istruzioni qui sotto.">
-                    Kinetix is in active <strong>Pre-Release</strong> development. The official installer uploaded to
-                    GitHub Releases is currently the <strong>Windows build only</strong>, for convenience due to the
-                    frequent release of new builds. Linux and macOS users can build from source following the
-                    instructions below.
+                <p data-en="Kinetix is in active <strong>Pre-Release</strong> development. Prebuilt installers are published on GitHub Releases for Windows, Linux, and macOS (x86_64 and ARM64), but the exact set of assets attached to a given release can lag behind the latest source — if a download button below can't find a matching asset yet, it falls back to the Releases page. Building from source (instructions nested under each platform) always reflects the latest code."
+                    data-it="Kinetix è in fase attiva di sviluppo <strong>Pre-Release</strong>. Gli installer precompilati sono pubblicati nelle Release di GitHub per Windows, Linux e macOS (x86_64 e ARM64), ma il set esatto di file allegati a una release può essere in ritardo rispetto ai sorgenti più recenti — se un pulsante di download qui sotto non trova ancora un file corrispondente, reindirizza alla pagina delle Release. Compilare dai sorgenti (istruzioni annidate sotto ogni piattaforma) riflette sempre il codice più recente.">
+                    Kinetix is in active <strong>Pre-Release</strong> development. Prebuilt installers are published on
+                    GitHub Releases for Windows, Linux, and macOS (x86_64 and ARM64), but the exact set of assets
+                    attached to a given release can lag behind the latest source — if a download button below can't
+                    find a matching asset yet, it falls back to the Releases page. Building from source (instructions
+                    nested under each platform) always reflects the latest code.
                 </p>
             </div>
 
@@ -359,18 +372,15 @@
                     <span class="platform-tag tag-recommended" data-en="Recommended"
                         data-it="Consigliato">Recommended</span>
                 </div>
-                <p data-en="The easiest way to install Kinetix. Download the official installer from the latest GitHub Release and run it."
-                    data-it="Il modo più semplice per installare Kinetix. Scarica l'installer ufficiale dall'ultima Release su GitHub e avvialo.">
-                    The easiest way to install Kinetix. Download the official installer from the latest GitHub Release
-                    and run it.
+                <p data-en="The easiest way to install Kinetix. Download the installer for your CPU architecture from the latest GitHub Release and run it."
+                    data-it="Il modo più semplice per installare Kinetix. Scarica l'installer per la tua architettura CPU dall'ultima Release su GitHub e avvialo.">
+                    The easiest way to install Kinetix. Download the installer for your CPU architecture from the
+                    latest GitHub Release and run it.
                 </p>
                 <ol class="install-steps">
-                    <li data-step="1."
-                        data-en="Download <code>KinetixInstaller.exe</code> from the latest <a href='https://github.com/MisterY3515/Kinetix/releases' target='_blank' style='color:var(--cyan)'>GitHub Release</a>."
-                        data-it="Scarica <code>KinetixInstaller.exe</code> dall'ultima <a href='https://github.com/MisterY3515/Kinetix/releases' target='_blank' style='color:var(--cyan)'>Release su GitHub</a>.">
-                        Download <code>KinetixInstaller.exe</code> from the latest <a
-                            href="https://github.com/MisterY3515/Kinetix/releases" target="_blank"
-                            style="color:var(--cyan)">GitHub Release</a>.
+                    <li data-step="1." data-en="Download the installer for your architecture below."
+                        data-it="Scarica l'installer per la tua architettura qui sotto.">
+                        Download the installer for your architecture below.
                     </li>
                     <li data-step="2." data-en="Run the installer. It will guide you through the setup process."
                         data-it="Avvia l'installer. Ti guiderà attraverso il processo di installazione.">
@@ -388,7 +398,7 @@
                 <div class="requirements-grid">
                     <div class="req-item">
                         <div class="req-label">OS</div>
-                        <div class="req-value">Windows 10+ (x64)</div>
+                        <div class="req-value">Windows 10+ (x86_64 or ARM64)</div>
                     </div>
                     <div class="req-item">
                         <div class="req-label" data-en="Disk Space" data-it="Spazio Disco">Disk Space</div>
@@ -397,14 +407,25 @@
                 </div>
 
                 <div class="btn-group">
-                    <a id="direct-download-btn" href="#" class="download-btn">
+                    <a id="download-windows-x86_64" href="#" class="download-btn">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
                             <polyline points="7 10 12 15 17 10" />
                             <line x1="12" y1="15" x2="12" y2="3" />
                         </svg>
-                        <span data-en="Download for Windows" data-it="Scarica per Windows">Download for Windows</span>
+                        <span data-en="Download for Windows (x86_64)" data-it="Scarica per Windows (x86_64)">Download
+                            for Windows (x86_64)</span>
+                    </a>
+                    <a id="download-windows-arm64" href="#" class="download-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+                            <polyline points="7 10 12 15 17 10" />
+                            <line x1="12" y1="15" x2="12" y2="3" />
+                        </svg>
+                        <span data-en="Download for Windows (ARM64)" data-it="Scarica per Windows (ARM64)">Download
+                            for Windows (ARM64)</span>
                     </a>
                     <a href="https://github.com/MisterY3515/Kinetix/releases" target="_blank" class="releases-btn">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
@@ -416,6 +437,56 @@
                         <span data-en="View All Releases" data-it="Vedi Tutte le Release">View All Releases</span>
                     </a>
                 </div>
+
+                <details class="source-toggle expandable-item">
+                    <summary data-en="Build from source instead" data-it="Compila dai sorgenti">Build from source
+                        instead</summary>
+                    <p data-en="Requires the Rust toolchain (MSVC target) and the MSVC C++ build tools."
+                        data-it="Richiede la toolchain Rust (target MSVC) e i build tools MSVC C++.">
+                        Requires the Rust toolchain (MSVC target) and the MSVC C++ build tools.
+                    </p>
+                    <ol class="install-steps">
+                        <li data-step="1." data-en="Install Rust and the MSVC C++ build tools:"
+                            data-it="Installa Rust e i build tools MSVC C++:">
+                            Install Rust and the MSVC C++ build tools:
+                        </li>
+                    </ol>
+                    <div class="code-block"><code># Installs rustup (choose the default MSVC toolchain when prompted)
+# https://rustup.rs
+
+# Also install "Desktop development with C++" from the
+# Visual Studio Build Tools installer (provides the MSVC linker):
+# https://visualstudio.microsoft.com/visual-cpp-build-tools/
+# -- for ARM64 builds, additionally add the "MSVC v143 - VS 2022
+# C++ ARM64 build tools" individual component.</code></div>
+                    <ol class="install-steps" start="2">
+                        <li data-step="2." data-en="Clone and build (produces <code>kivm.exe</code> / <code>kicomp.exe</code>):"
+                            data-it="Clona e compila (produce <code>kivm.exe</code> / <code>kicomp.exe</code>):">
+                            Clone and build (produces <code>kivm.exe</code> / <code>kicomp.exe</code>):
+                        </li>
+                    </ol>
+                    <div class="code-block"><code>git clone https://github.com/MisterY3515/Kinetix.git
+cd Kinetix
+cargo build --release -p kinetix-cli -p kinetix-kicomp
+.\target\release\kivm.exe version</code></div>
+                    <p data-en="To also build the GUI installer itself (<code>-p kinetix-installer</code>), no extra system packages are needed beyond the C++ build tools above."
+                        data-it="Per compilare anche l'installer grafico (<code>-p kinetix-installer</code>), non servono pacchetti di sistema oltre ai build tools C++ indicati sopra.">
+                        To also build the GUI installer itself (<code>-p kinetix-installer</code>), no extra system
+                        packages are needed beyond the C++ build tools above.
+                    </p>
+                    <h4 class="req-heading" data-en="Build Prerequisites" data-it="Prerequisiti di Compilazione">Build
+                        Prerequisites</h4>
+                    <div class="requirements-grid">
+                        <div class="req-item">
+                            <div class="req-label">OS</div>
+                            <div class="req-value">Windows 10+ (x86_64 or ARM64)</div>
+                        </div>
+                        <div class="req-item">
+                            <div class="req-label" data-en="Toolchain" data-it="Toolchain">Toolchain</div>
+                            <div class="req-value">Rust 1.85+ (stable, MSVC), VS C++ Build Tools</div>
+                        </div>
+                    </div>
+                </details>
             </div>
 
             <!-- ====== LINUX ====== -->
@@ -423,55 +494,130 @@
                 <div class="platform-header">
                     <span class="platform-icon">🐧</span>
                     <span class="platform-name">Linux</span>
-                    <span class="platform-tag tag-source" data-en="Build from Source"
-                        data-it="Compilazione dai Sorgenti">Build from Source</span>
+                    <span class="platform-tag tag-recommended" data-en="Recommended"
+                        data-it="Consigliato">Recommended</span>
                 </div>
-                <p data-en="Build Kinetix from source using the Rust toolchain. Requires <code>cargo</code> and <code>LLVM 17+</code> libraries installed on your system."
-                    data-it="Compila Kinetix dai sorgenti usando la toolchain Rust. Richiede <code>cargo</code> e le librerie <code>LLVM 17+</code> installate nel sistema.">
-                    Build Kinetix from source using the Rust toolchain. Requires <code>cargo</code> and
-                    <code>LLVM 17+</code> libraries installed on your system.
+                <p data-en="Download the prebuilt binary for your CPU architecture. It's a single standalone executable — no system package installation needed to run it."
+                    data-it="Scarica il binario precompilato per la tua architettura CPU. È un eseguibile singolo e autonomo — non serve installare pacchetti di sistema per eseguirlo.">
+                    Download the prebuilt binary for your CPU architecture. It's a single standalone executable — no
+                    system package installation needed to run it.
                 </p>
                 <ol class="install-steps">
-                    <li data-step="1." data-en="Install prerequisites:" data-it="Installa i prerequisiti:">
-                        Install prerequisites:
+                    <li data-step="1." data-en="Download the installer for your architecture below."
+                        data-it="Scarica l'installer per la tua architettura qui sotto.">
+                        Download the installer for your architecture below.
+                    </li>
+                    <li data-step="2." data-en="Make it executable and run it. It will guide you through the setup process."
+                        data-it="Rendilo eseguibile ed eseguilo. Ti guiderà attraverso il processo di installazione.">
+                        Make it executable and run it. It will guide you through the setup process.
+                    </li>
+                    <li data-step="3." data-en="Once installed, open a new terminal and verify with:"
+                        data-it="Una volta installato, apri un nuovo terminale e verifica con:">
+                        Once installed, open a new terminal and verify with:
                     </li>
                 </ol>
-                <div class="code-block"><code># Debian / Ubuntu
-sudo apt update && sudo apt install -y build-essential llvm-17-dev libclang-17-dev curl
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-
-# Fedora / RHEL
-sudo dnf install -y llvm17-devel clang17-devel
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh</code></div>
-                <ol class="install-steps" start="2">
-                    <li data-step="2." data-en="Clone and build:" data-it="Clona e compila:">
-                        Clone and build:
-                    </li>
-                </ol>
-                <div class="code-block"><code>git clone https://github.com/MisterY3515/Kinetix.git
-cd Kinetix
-cargo build --release</code></div>
-                <ol class="install-steps" start="3">
-                    <li data-step="3." data-en="Add to your PATH (optional):"
-                        data-it="Aggiungi al tuo PATH (opzionale):">
-                        Add to your PATH (optional):
-                    </li>
-                </ol>
-                <div class="code-block"><code>sudo cp target/release/kivm /usr/local/bin/
-kivm version</code></div>
+                <div class="code-block"><code>chmod +x KinetixInstaller-linux-*
+./KinetixInstaller-linux-*</code></div>
+                <div class="code-block"><code>kivm version</code></div>
 
                 <h4 class="req-heading" data-en="System Requirements"
                     data-it="Requisiti di Sistema">System Requirements</h4>
                 <div class="requirements-grid">
                     <div class="req-item">
                         <div class="req-label">OS</div>
-                        <div class="req-value">Ubuntu 20.04+ / Fedora 36+</div>
+                        <div class="req-value">Debian 12+ / Ubuntu 22.04+ / Fedora 36+ (glibc 2.35+)</div>
                     </div>
                     <div class="req-item">
-                        <div class="req-label">Toolchain</div>
-                        <div class="req-value">Rust 1.75+, LLVM 17+</div>
+                        <div class="req-label" data-en="Disk Space" data-it="Spazio Disco">Disk Space</div>
+                        <div class="req-value">~150 MB</div>
                     </div>
                 </div>
+
+                <div class="btn-group">
+                    <a id="download-linux-x86_64" href="#" class="download-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+                            <polyline points="7 10 12 15 17 10" />
+                            <line x1="12" y1="15" x2="12" y2="3" />
+                        </svg>
+                        <span data-en="Download for Linux (x86_64)" data-it="Scarica per Linux (x86_64)">Download for
+                            Linux (x86_64)</span>
+                    </a>
+                    <a id="download-linux-aarch64" href="#" class="download-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+                            <polyline points="7 10 12 15 17 10" />
+                            <line x1="12" y1="15" x2="12" y2="3" />
+                        </svg>
+                        <span data-en="Download for Linux (ARM64)" data-it="Scarica per Linux (ARM64)">Download for
+                            Linux (ARM64)</span>
+                    </a>
+                    <a href="https://github.com/MisterY3515/Kinetix/releases" target="_blank" class="releases-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
+                            <polyline points="15 3 21 3 21 9" />
+                            <line x1="10" y1="14" x2="21" y2="3" />
+                        </svg>
+                        <span data-en="View All Releases" data-it="Vedi Tutte le Release">View All Releases</span>
+                    </a>
+                </div>
+
+                <details class="source-toggle expandable-item">
+                    <summary data-en="Build from source instead" data-it="Compila dai sorgenti">Build from source
+                        instead</summary>
+                    <p data-en="Only the Rust toolchain is required to build <code>kivm</code>/<code>kicomp</code> — LLVM is not a build dependency of the default build."
+                        data-it="Per compilare <code>kivm</code>/<code>kicomp</code> serve solo la toolchain Rust — LLVM non è una dipendenza di compilazione della build predefinita.">
+                        Only the Rust toolchain is required to build <code>kivm</code>/<code>kicomp</code> — LLVM is
+                        not a build dependency of the default build.
+                    </p>
+                    <ol class="install-steps">
+                        <li data-step="1." data-en="Install prerequisites:" data-it="Installa i prerequisiti:">
+                            Install prerequisites:
+                        </li>
+                    </ol>
+                    <div class="code-block"><code># Debian / Ubuntu
+sudo apt update && sudo apt install -y build-essential curl
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+# Fedora / RHEL
+sudo dnf install -y gcc curl
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh</code></div>
+                    <ol class="install-steps" start="2">
+                        <li data-step="2." data-en="Clone and build (produces <code>kivm</code> / <code>kicomp</code>):"
+                            data-it="Clona e compila (produce <code>kivm</code> / <code>kicomp</code>):">
+                            Clone and build (produces <code>kivm</code> / <code>kicomp</code>):
+                        </li>
+                    </ol>
+                    <div class="code-block"><code>git clone https://github.com/MisterY3515/Kinetix.git
+cd Kinetix
+cargo build --release -p kinetix-cli -p kinetix-kicomp
+sudo cp target/release/kivm /usr/local/bin/
+kivm version</code></div>
+                    <p data-en="Building the GUI installer too (<code>-p kinetix-installer</code>, or a plain <code>cargo build --release</code> with no <code>-p</code> filter) additionally needs GTK3, ALSA, and X11/OpenGL headers:"
+                        data-it="Per compilare anche l'installer grafico (<code>-p kinetix-installer</code>, oppure un semplice <code>cargo build --release</code> senza filtro <code>-p</code>) servono anche gli header GTK3, ALSA e X11/OpenGL:">
+                        Building the GUI installer too (<code>-p kinetix-installer</code>, or a plain
+                        <code>cargo build --release</code> with no <code>-p</code> filter) additionally needs GTK3,
+                        ALSA, and X11/OpenGL headers:
+                    </p>
+                    <div class="code-block"><code># Debian / Ubuntu
+sudo apt install -y pkg-config libasound2-dev libgtk-3-dev libxcb1-dev \
+    libxkbcommon-dev libgl1-mesa-dev libxrandr-dev libxi-dev libxcursor-dev</code></div>
+                    <h4 class="req-heading" data-en="Build Prerequisites" data-it="Prerequisiti di Compilazione">Build
+                        Prerequisites</h4>
+                    <div class="requirements-grid">
+                        <div class="req-item">
+                            <div class="req-label">OS</div>
+                            <div class="req-value">Debian 12+ / Ubuntu 20.04+ / Fedora 36+</div>
+                        </div>
+                        <div class="req-item">
+                            <div class="req-label" data-en="Toolchain" data-it="Toolchain">Toolchain</div>
+                            <div class="req-value">Rust 1.85+ (stable)</div>
+                        </div>
+                    </div>
+                </details>
             </div>
 
             <!-- ====== macOS ====== -->
@@ -479,38 +625,31 @@ kivm version</code></div>
                 <div class="platform-header">
                     <span class="platform-icon">🍎</span>
                     <span class="platform-name">macOS</span>
-                    <span class="platform-tag tag-source" data-en="Build from Source"
-                        data-it="Compilazione dai Sorgenti">Build from Source</span>
+                    <span class="platform-tag tag-recommended" data-en="Recommended"
+                        data-it="Consigliato">Recommended</span>
                 </div>
-                <p data-en="Build Kinetix using Homebrew to install the required dependencies and the Rust toolchain."
-                    data-it="Compila Kinetix usando Homebrew per installare le dipendenze e la toolchain Rust.">
-                    Build Kinetix using Homebrew to install the required dependencies and the Rust toolchain.
+                <p data-en="Download the Universal installer package — a single <code>.pkg</code> that runs natively on both Intel and Apple Silicon Macs."
+                    data-it="Scarica il pacchetto installer Universal — un singolo <code>.pkg</code> che gira nativamente sia su Mac Intel che Apple Silicon.">
+                    Download the Universal installer package — a single <code>.pkg</code> that runs natively on both
+                    Intel and Apple Silicon Macs.
                 </p>
                 <ol class="install-steps">
-                    <li data-step="1." data-en="Install prerequisites via Homebrew:"
-                        data-it="Installa i prerequisiti tramite Homebrew:">
-                        Install prerequisites via Homebrew:
+                    <li data-step="1." data-en="Download <code>KinetixInstaller-macos-universal.pkg</code> below."
+                        data-it="Scarica <code>KinetixInstaller-macos-universal.pkg</code> qui sotto.">
+                        Download <code>KinetixInstaller-macos-universal.pkg</code> below.
+                    </li>
+                    <li data-step="2."
+                        data-en="Open it and follow the installer. Since it isn't notarized yet, right-click the .pkg and choose <strong>Open</strong> to bypass Gatekeeper's warning."
+                        data-it="Aprilo e segui l'installer. Non essendo ancora notarizzato, fai clic destro sul .pkg e scegli <strong>Apri</strong> per bypassare l'avviso di Gatekeeper.">
+                        Open it and follow the installer. Since it isn't notarized yet, right-click the .pkg and
+                        choose <strong>Open</strong> to bypass Gatekeeper's warning.
+                    </li>
+                    <li data-step="3." data-en="Once installed, open a terminal and verify with:"
+                        data-it="Una volta installato, apri un terminale e verifica con:">
+                        Once installed, open a terminal and verify with:
                     </li>
                 </ol>
-                <div class="code-block"><code>brew install llvm@17
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh</code></div>
-                <ol class="install-steps" start="2">
-                    <li data-step="2." data-en="Clone and build:" data-it="Clona e compila:">
-                        Clone and build:
-                    </li>
-                </ol>
-                <div class="code-block"><code>git clone https://github.com/MisterY3515/Kinetix.git
-cd Kinetix
-export LLVM_SYS_170_PREFIX=$(brew --prefix llvm@17)
-cargo build --release</code></div>
-                <ol class="install-steps" start="3">
-                    <li data-step="3." data-en="Add to your PATH (optional):"
-                        data-it="Aggiungi al tuo PATH (opzionale):">
-                        Add to your PATH (optional):
-                    </li>
-                </ol>
-                <div class="code-block"><code>sudo cp target/release/kivm /usr/local/bin/
-kivm version</code></div>
+                <div class="code-block"><code>kivm version</code></div>
 
                 <h4 class="req-heading" data-en="System Requirements"
                     data-it="Requisiti di Sistema">System Requirements</h4>
@@ -520,10 +659,79 @@ kivm version</code></div>
                         <div class="req-value">macOS 12+ (Intel / Apple Silicon)</div>
                     </div>
                     <div class="req-item">
-                        <div class="req-label">Toolchain</div>
-                        <div class="req-value">Rust 1.75+, LLVM 17+</div>
+                        <div class="req-label" data-en="Disk Space" data-it="Spazio Disco">Disk Space</div>
+                        <div class="req-value">~150 MB</div>
                     </div>
                 </div>
+
+                <div class="btn-group">
+                    <a id="download-macos-universal" href="#" class="download-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+                            <polyline points="7 10 12 15 17 10" />
+                            <line x1="12" y1="15" x2="12" y2="3" />
+                        </svg>
+                        <span data-en="Download for macOS (Universal: Intel &amp; Apple Silicon)"
+                            data-it="Scarica per macOS (Universal: Intel e Apple Silicon)">Download for macOS
+                            (Universal: Intel &amp; Apple Silicon)</span>
+                    </a>
+                    <a href="https://github.com/MisterY3515/Kinetix/releases" target="_blank" class="releases-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
+                            <polyline points="15 3 21 3 21 9" />
+                            <line x1="10" y1="14" x2="21" y2="3" />
+                        </svg>
+                        <span data-en="View All Releases" data-it="Vedi Tutte le Release">View All Releases</span>
+                    </a>
+                </div>
+
+                <details class="source-toggle expandable-item">
+                    <summary data-en="Build from source instead" data-it="Compila dai sorgenti">Build from source
+                        instead</summary>
+                    <p data-en="Only the Rust toolchain and Xcode Command Line Tools are required — no Homebrew packages needed, and LLVM is not a build dependency of the default build."
+                        data-it="Servono solo la toolchain Rust e gli Xcode Command Line Tools — nessun pacchetto Homebrew necessario, e LLVM non è una dipendenza di compilazione della build predefinita.">
+                        Only the Rust toolchain and Xcode Command Line Tools are required — no Homebrew packages
+                        needed, and LLVM is not a build dependency of the default build.
+                    </p>
+                    <ol class="install-steps">
+                        <li data-step="1." data-en="Install prerequisites:" data-it="Installa i prerequisiti:">
+                            Install prerequisites:
+                        </li>
+                    </ol>
+                    <div class="code-block"><code>xcode-select --install
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh</code></div>
+                    <ol class="install-steps" start="2">
+                        <li data-step="2." data-en="Clone and build (produces <code>kivm</code> / <code>kicomp</code>):"
+                            data-it="Clona e compila (produce <code>kivm</code> / <code>kicomp</code>):">
+                            Clone and build (produces <code>kivm</code> / <code>kicomp</code>):
+                        </li>
+                    </ol>
+                    <div class="code-block"><code>git clone https://github.com/MisterY3515/Kinetix.git
+cd Kinetix
+cargo build --release -p kinetix-cli -p kinetix-kicomp
+sudo cp target/release/kivm /usr/local/bin/
+kivm version</code></div>
+                    <p data-en="To also produce a Universal (x86_64 + arm64) build like the official installer, use the provided build script instead of a plain <code>cargo build</code>:"
+                        data-it="Per produrre anche una build Universal (x86_64 + arm64) come l'installer ufficiale, usa lo script di build fornito invece di un semplice <code>cargo build</code>:">
+                        To also produce a Universal (x86_64 + arm64) build like the official installer, use the
+                        provided build script instead of a plain <code>cargo build</code>:
+                    </p>
+                    <div class="code-block"><code>./scripts/build_macos.sh</code></div>
+                    <h4 class="req-heading" data-en="Build Prerequisites" data-it="Prerequisiti di Compilazione">Build
+                        Prerequisites</h4>
+                    <div class="requirements-grid">
+                        <div class="req-item">
+                            <div class="req-label">OS</div>
+                            <div class="req-value">macOS 12+ (Intel / Apple Silicon)</div>
+                        </div>
+                        <div class="req-item">
+                            <div class="req-label" data-en="Toolchain" data-it="Toolchain">Toolchain</div>
+                            <div class="req-value">Rust 1.85+ (stable), Xcode CLT</div>
+                        </div>
+                    </div>
+                </details>
             </div>
 
             <hr class="section-divider">
@@ -573,28 +781,49 @@ kivm version</code></div>
 
     <script src="script.js"></script>
     <script>
-        // Fetch latest release (including pre-releases) and set direct download link
+        // Fetch the latest release (including pre-releases) and wire each
+        // per-platform/per-arch button to its matching asset. If a button's
+        // asset isn't attached to the latest release yet, it falls back to
+        // the release page itself rather than a dead link.
         (async function () {
-            const btn = document.getElementById('direct-download-btn');
-            try {
-                const res = await fetch('https://api.github.com/repos/MisterY3515/Kinetix/releases');
-                if (!res.ok) return;
-                const releases = await res.json();
-                if (!releases.length) return;
-                // First entry is the most recent (including pre-releases)
-                const latest = releases[0];
-                const asset = latest.assets.find(a => a.name === 'KinetixInstaller.exe');
-                if (asset) {
-                    btn.href = asset.browser_download_url;
-                } else {
-                    // Fallback: open the release page itself
-                    btn.href = latest.html_url;
+            const targets = [
+                { id: 'download-windows-x86_64', assetName: 'KinetixInstaller-windows-x86_64.exe' },
+                { id: 'download-windows-arm64', assetName: 'KinetixInstaller-windows-arm64.exe' },
+                { id: 'download-linux-x86_64', assetName: 'KinetixInstaller-linux-x86_64' },
+                { id: 'download-linux-aarch64', assetName: 'KinetixInstaller-linux-aarch64' },
+                { id: 'download-macos-universal', assetName: 'KinetixInstaller-macos-universal.pkg' },
+            ];
+            const releasesUrl = 'https://github.com/MisterY3515/Kinetix/releases';
+
+            const fallbackAll = (url) => {
+                for (const t of targets) {
+                    const btn = document.getElementById(t.id);
+                    if (!btn) continue;
+                    btn.href = url;
                     btn.target = '_blank';
                 }
+            };
+
+            try {
+                const res = await fetch('https://api.github.com/repos/MisterY3515/Kinetix/releases');
+                if (!res.ok) throw new Error('bad response');
+                const releases = await res.json();
+                if (!releases.length) throw new Error('no releases');
+                // First entry is the most recent (including pre-releases)
+                const latest = releases[0];
+                for (const t of targets) {
+                    const btn = document.getElementById(t.id);
+                    if (!btn) continue;
+                    const asset = latest.assets.find(a => a.name === t.assetName);
+                    if (asset) {
+                        btn.href = asset.browser_download_url;
+                    } else {
+                        btn.href = latest.html_url;
+                        btn.target = '_blank';
+                    }
+                }
             } catch (e) {
-                // Fallback on network error
-                btn.href = 'https://github.com/MisterY3515/Kinetix/releases';
-                btn.target = '_blank';
+                fallbackAll(releasesUrl);
             }
         })();
     </script>
