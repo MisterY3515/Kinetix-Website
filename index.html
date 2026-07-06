@@ -16,17 +16,13 @@
 
 <body>
 
-    <!-- Abstract Background -->
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-
     <!-- Navbar -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">
+            <a href="index.html" class="logo">
                 <img src="logo.png" alt="Kinetix Logo" class="logo-img">
                 <span class="logo-text">Kinetix</span>
-            </div>
+            </a>
             <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMobileMenu()">
                 <span></span><span></span><span></span>
             </button>
@@ -55,11 +51,9 @@
         <!-- Hero Section -->
         <section class="hero">
             <div class="hero-content">
-                <div class="badges-row" style="display: flex; gap: 0.8rem; margin-bottom: 1.5rem;">
+                <div class="badges-row">
                     <div class="badge">v0.0.9 (Build 35) Released</div>
-                    <div class="badge warning-badge"
-                        style="color: #FFBD2E; border-color: rgba(255, 189, 46, 0.3); background: rgba(255, 189, 46, 0.1);">
-                        Pre-Release</div>
+                    <div class="badge badge-warning">Pre-Release</div>
                 </div>
 
                 <h1 class="hero-title">Kinetix</h1>
@@ -133,7 +127,7 @@
 
             <div class="feature-grid">
 
-                <div class="feature-card glass">
+                <div class="feature-card">
                     <div class="feature-icon">🛡️</div>
                     <h3>Linear Ownership</h3>
                     <p data-en="Strict AST-based borrow validation. Say goodbye to race conditions and hidden aliases during compile-time without complex lifetimes."
@@ -142,7 +136,7 @@
                         compile-time without complex lifetimes.</p>
                 </div>
 
-                <div class="feature-card glass">
+                <div class="feature-card">
                     <div class="feature-icon">⚡</div>
                     <h3>Reactive Graph</h3>
                     <p data-en="A native frame scheduler built right into the Virtual Machine. State mutations trigger zero-overhead cached effects via topological sort."
@@ -152,7 +146,7 @@
                         cached effects via topological sort.</p>
                 </div>
 
-                <div class="feature-card glass">
+                <div class="feature-card">
                     <div class="feature-icon">🔒</div>
                     <h3>Capability IR</h3>
                     <p data-en="Sandbox Enforcement at compile level. Functions inherently declare side-effects. Network and FS access checked before the bytecode is emitted."
@@ -161,7 +155,7 @@
                         access checked before the bytecode is even emitted.</p>
                 </div>
 
-                <div class="feature-card glass">
+                <div class="feature-card">
                     <div class="feature-icon">🚀</div>
                     <h3>Zero GC</h3>
                     <p data-en="Deterministic Drop Order Verification and LLVM native bridging. Predictable performance scaling strictly O(n) under load."
@@ -186,7 +180,7 @@
             <div class="roadmap-grid">
 
                 <!-- Completion Stats -->
-                <div class="completion-stats glass-panel">
+                <div class="completion-stats panel">
                     <h3 data-en="Global Completion" data-it="Completamento Globale">Global Completion</h3>
 
                     <div class="progress-item">
@@ -244,7 +238,7 @@
                     </div>
 
                     <!-- Phase 5 -->
-                    <div class="progress-item" style="opacity: 1.0;">
+                    <div class="progress-item">
                         <div class="progress-header">
                             <span data-en="Phase 5: Ecosystem & Networking"
                                 data-it="Fase 5: Ecosistema & Networking">Phase
@@ -296,7 +290,7 @@
                 </div>
 
                 <!-- Simplified Roadmap list -->
-                <div class="simplified-roadmap glass-panel">
+                <div class="simplified-roadmap panel">
                     <h3 data-en="Milestones" data-it="Traguardi">Milestones</h3>
                     <ul class="milestone-list">
 
@@ -575,8 +569,7 @@
     <footer>
         <div class="footer-content">
             <div class="footer-logo">
-                <img src="logo.png" alt="Logo" class="logo-img"
-                    style="height:24px; vertical-align:middle; margin-right:8px;">Kinetix
+                <img src="logo.png" alt="Logo" class="footer-logo-img">Kinetix
             </div>
             <p data-en="© 2026 MisterY3515. All rights reserved."
                 data-it="© 2026 MisterY3515. Tutti i diritti riservati.">© 2026 MisterY3515. All rights reserved.</p>

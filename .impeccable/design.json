@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-06T00:00:00.000Z",
+  "title": "Design System: Kinetix",
+  "extensions": {
+    "colorMeta": {
+      "terminal-cyan": { "role": "primary", "displayName": "Terminal Cyan", "canonical": "oklch(87% 0.15 200)", "tonalRamp": ["#001a1d", "#003338", "#004d55", "#00666f", "#0099a6", "#00ccdb", "#00e6f5", "#00f0ff"] },
+      "deep-violet": { "role": "secondary", "displayName": "Deep Violet", "canonical": "oklch(46% 0.28 300)", "tonalRamp": ["#0e0021", "#1c0042", "#2a0063", "#390084", "#4700a5", "#5800c6", "#6800e8", "#7000ff"] },
+      "void": { "role": "neutral", "displayName": "Void", "canonical": "oklch(9% 0.01 260)" },
+      "terminal-surface": { "role": "neutral", "displayName": "Terminal Surface", "canonical": "oklch(13% 0.015 260)" },
+      "signal-white": { "role": "neutral", "displayName": "Signal White", "canonical": "oklch(96% 0.01 240)" },
+      "slate-mist": { "role": "neutral", "displayName": "Slate Mist", "canonical": "oklch(65% 0.04 250)" },
+      "status-green": { "role": "tertiary", "displayName": "Status Green", "canonical": "oklch(72% 0.19 145)" },
+      "status-amber": { "role": "tertiary", "displayName": "Status Amber", "canonical": "oklch(80% 0.15 75)" },
+      "status-red": { "role": "tertiary", "displayName": "Status Red", "canonical": "oklch(65% 0.19 25)" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero H1 only." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles (Features, Project Status, Changelog)." },
+      "body": { "displayName": "Body", "purpose": "Paragraph copy, capped ~65ch." },
+      "label": { "displayName": "Label", "purpose": "Nav links, button text." },
+      "mono": { "displayName": "Mono", "purpose": "Code block, badges, version tag, status labels." }
+    },
+    "shadows": [
+      { "name": "cta-glow", "value": "0 10px 30px rgba(0, 240, 255, 0.25)", "purpose": "Primary button hover only." },
+      { "name": "code-elevation", "value": "0 20px 50px rgba(0, 0, 0, 0.5)", "purpose": "The hero code showcase at rest — the one genuinely elevated surface." }
+    ],
+    "motion": [
+      { "name": "ease-out-quart", "value": "cubic-bezier(0.25, 1, 0.5, 1)", "purpose": "Default easing for reveals and hover state transitions." },
+      { "name": "duration-fast", "value": "180ms", "purpose": "Hover/focus micro-interactions." },
+      { "name": "duration-reveal", "value": "600ms", "purpose": "Scroll-triggered section reveals." }
+    ],
+    "breakpoints": [
+      { "name": "md", "value": "900px" },
+      { "name": "sm", "value": "480px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The single filled CTA on the page — solid Terminal Cyan, used for the highest-priority action only.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Explore Documentation</a>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 0.75rem; padding: 1rem 1.75rem; border-radius: 8px; background: #00F0FF; color: #05050A; font-weight: 600; font-size: 1rem; text-decoration: none; transition: transform 180ms cubic-bezier(0.25,1,0.5,1), box-shadow 180ms cubic-bezier(0.25,1,0.5,1); } .ds-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,240,255,0.25); } .ds-btn-primary:focus-visible { outline: 2px solid #00F0FF; outline-offset: 2px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Outline button for secondary actions (View on GitHub) — no fill, no gradient.",
+      "html": "<a class=\"ds-btn-secondary\" href=\"#\">View on GitHub</a>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; padding: 1rem 1.75rem; border-radius: 8px; background: transparent; border: 1px solid rgba(240,244,248,0.16); color: #F0F4F8; font-weight: 600; font-size: 1rem; text-decoration: none; transition: border-color 180ms cubic-bezier(0.25,1,0.5,1); } .ds-btn-secondary:hover { border-color: rgba(240,244,248,0.6); } .ds-btn-secondary:focus-visible { outline: 2px solid #F0F4F8; outline-offset: 2px; }"
+    },
+    {
+      "name": "Feature Card",
+      "kind": "card",
+      "refersTo": "card-flat",
+      "description": "Flat surface, no glass/blur — depth on hover comes from a border shift and lift only.",
+      "html": "<div class=\"ds-feature-card\"><div class=\"ds-feature-icon\">&#128737;</div><h3>Linear Ownership</h3><p>Strict AST-based borrow validation, checked at compile time.</p></div>",
+      "css": ".ds-feature-card { padding: 2rem; border-radius: 12px; background: #0D0D14; border: 1px solid rgba(240,244,248,0.08); transition: border-color 180ms cubic-bezier(0.25,1,0.5,1), transform 180ms cubic-bezier(0.25,1,0.5,1); } .ds-feature-card:hover { border-color: rgba(240,244,248,0.2); transform: translateY(-4px); } .ds-feature-icon { font-size: 1.75rem; margin-bottom: 1.25rem; } .ds-feature-card h3 { font-size: 1.15rem; font-weight: 700; color: #F0F4F8; margin: 0 0 0.75rem; } .ds-feature-card p { font-size: 0.95rem; color: #8B9BB4; line-height: 1.6; margin: 0; }"
+    },
+    {
+      "name": "Version Badge",
+      "kind": "chip",
+      "refersTo": "badge",
+      "description": "Monospace status badge — reinforces the terminal personality outside the code block.",
+      "html": "<span class=\"ds-badge\">v0.0.9 (Build 36)</span>",
+      "css": ".ds-badge { display: inline-flex; align-items: center; padding: 0.4rem 1rem; border-radius: 20px; border: 1px solid rgba(0,240,255,0.25); color: #00F0FF; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; font-weight: 400; background: transparent; }"
+    },
+    {
+      "name": "Nav Link",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Default/hover/active states for top navigation.",
+      "html": "<a class=\"ds-nav-link\" href=\"#\">Features</a>",
+      "css": ".ds-nav-link { color: #8B9BB4; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: color 180ms cubic-bezier(0.25,1,0.5,1); } .ds-nav-link:hover { color: #F0F4F8; } .ds-nav-link.active { color: #00F0FF; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Living Terminal",
+    "overview": "The site reads as a terminal session that's actually running, not a marketing template pretending to be technical. The code showcase in the hero is the credibility anchor and the only genuinely elevated surface on the page; everything else is built to feel like output from the same machine, not decoration bolted onto a SaaS shell. This explicitly rejects the previous build's gradient-clipped headline text, glass panels on nearly every card, and ambient blurred color blobs. Vibrancy now comes from restraint: cyan and violet stay strong where they appear, but they appear on purpose, in one or two places.",
+    "keyCharacteristics": [
+      "Monospace carries badges, labels, and the version string, not just the code block.",
+      "Exactly one surface on the page gets glass/blur: the code showcase.",
+      "Cyan and violet are rationed to the hero region; section headings and cards use solid neutrals.",
+      "Status color (green/amber) communicates real roadmap state, not decoration."
+    ],
+    "rules": [
+      { "name": "The One Elevated Surface Rule", "body": "Glass/blur is permitted on exactly one element: the hero code showcase. Everything else is flat with a 1px border.", "section": "elevation" },
+      { "name": "The Rationed Accent Rule", "body": "Cyan and violet together appear in at most two page regions. Section headings and body copy use Signal White or Slate Mist, never a gradient clip.", "section": "colors" },
+      { "name": "The No-Gradient-Text Rule", "body": "No background-clip: text anywhere. Every heading, logo, and label is a solid, single color.", "section": "typography" },
+      { "name": "The Flat-By-Default Rule", "body": "Every card and panel outside the hero is flat: solid terminal-surface background, 1px border, no blur, no shadow at rest.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do use Terminal Cyan as the single accent for anything interactive or currently-true.",
+      "Do keep the code showcase as the only glass/blur surface on the page.",
+      "Do use solid Signal White for every heading and logo mark.",
+      "Do let JetBrains Mono carry badges, the version tag, and status labels."
+    ],
+    "donts": [
+      "Don't use background-clip: text gradients on the logo, hero title, or section titles.",
+      "Don't apply backdrop-filter / translucent glass to feature cards, roadmap panels, or the mobile nav.",
+      "Don't use ambient blurred color blobs as page-background atmosphere.",
+      "Don't color feature-card icons in a rainbow rotation.",
+      "Don't reintroduce a second accent gradient on the progress-bar fill."
+    ]
+  }
+}

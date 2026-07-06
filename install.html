@@ -21,17 +21,15 @@
         }
 
         .install-page .page-title {
-            font-size: 3rem;
+            font-size: clamp(2rem, 4vw, 3rem);
             font-weight: 800;
+            letter-spacing: -0.03em;
             margin-bottom: 0.5rem;
-            background: linear-gradient(135deg, #FFF 0%, #A0B0D0 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--ink);
         }
 
         .install-page .page-subtitle {
-            color: var(--text-secondary);
+            color: var(--muted);
             font-size: 1.15rem;
             margin-bottom: 3rem;
         }
@@ -54,25 +52,23 @@
         }
 
         .notice-box p {
-            color: #FFBD2E;
+            color: var(--warning);
             font-size: 0.95rem;
             line-height: 1.6;
         }
 
         .platform-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            backdrop-filter: blur(16px);
+            background: var(--surface);
+            border: 1px solid var(--border);
             border-radius: 16px;
             padding: 2rem 2.5rem;
             margin-bottom: 2rem;
             position: relative;
-            overflow: hidden;
-            transition: border-color 0.3s ease;
+            transition: border-color var(--duration-fast) var(--ease);
         }
 
         .platform-card:hover {
-            border-color: rgba(255, 255, 255, 0.15);
+            border-color: var(--border-strong);
         }
 
         .platform-card .platform-header {
@@ -89,7 +85,7 @@
         .platform-card .platform-name {
             font-size: 1.4rem;
             font-weight: 700;
-            color: #FFF;
+            color: var(--ink);
         }
 
         .platform-card .platform-tag {
@@ -102,24 +98,24 @@
 
         .tag-recommended {
             background: rgba(39, 201, 63, 0.15);
-            color: #27C93F;
+            color: var(--success);
             border: 1px solid rgba(39, 201, 63, 0.3);
         }
 
         .tag-source {
             background: rgba(0, 240, 255, 0.1);
-            color: var(--accent-blue);
+            color: var(--cyan);
             border: 1px solid rgba(0, 240, 255, 0.2);
         }
 
         .tag-planned {
             background: rgba(139, 155, 180, 0.1);
-            color: var(--text-secondary);
+            color: var(--muted);
             border: 1px solid rgba(139, 155, 180, 0.2);
         }
 
         .platform-card p {
-            color: var(--text-secondary);
+            color: var(--muted);
             font-size: 0.95rem;
             line-height: 1.7;
             margin-bottom: 1rem;
@@ -139,7 +135,7 @@
             position: relative;
             padding-left: 2rem;
             margin-bottom: 14px;
-            color: var(--text-secondary);
+            color: var(--muted);
             font-size: 0.95rem;
             line-height: 1.6;
         }
@@ -149,7 +145,7 @@
             position: absolute;
             left: 0;
             top: 0;
-            color: var(--accent-blue);
+            color: var(--cyan);
             font-weight: 700;
             font-size: 0.95rem;
         }
@@ -160,12 +156,12 @@
             border-radius: 6px;
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.85rem;
-            color: #C9D1D9;
+            color: var(--code-text);
         }
 
         .code-block {
-            background: #0D0D14;
-            border: 1px solid var(--glass-border);
+            background: var(--surface);
+            border: 1px solid var(--border);
             border-radius: 10px;
             padding: 1rem 1.25rem;
             margin: 1rem 0;
@@ -175,7 +171,7 @@
         .code-block code {
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.88rem;
-            color: #C9D1D9;
+            color: var(--code-text);
             white-space: pre;
         }
 
@@ -188,50 +184,50 @@
 
         .req-item {
             background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--glass-border);
+            border: 1px solid var(--border);
             border-radius: 10px;
             padding: 1rem;
         }
 
         .req-item .req-label {
             font-size: 0.8rem;
-            color: var(--text-secondary);
+            color: var(--muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-bottom: 4px;
         }
 
         .req-item .req-value {
-            color: #FFF;
+            color: var(--ink);
             font-weight: 600;
             font-size: 0.95rem;
         }
 
+        /* Same single-accent CTA as the homepage primary button */
         .download-btn {
             display: inline-flex;
             align-items: center;
             gap: 0.75rem;
             padding: 0.85rem 1.5rem;
-            border-radius: 10px;
+            border-radius: 8px;
             font-weight: 600;
             text-decoration: none;
             font-size: 0.95rem;
-            transition: all 0.3s ease;
+            transition: transform var(--duration-fast) var(--ease), box-shadow var(--duration-fast) var(--ease);
             margin-top: 0.5rem;
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
-            color: #FFF;
+            background: var(--cyan);
+            color: var(--void);
             border: none;
-            box-shadow: 0 8px 24px rgba(112, 0, 255, 0.25);
         }
 
         .download-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 12px 32px rgba(0, 240, 255, 0.35);
+            box-shadow: 0 10px 30px rgba(0, 240, 255, 0.25);
         }
 
         .section-divider {
             border: none;
-            border-top: 1px solid var(--glass-border);
+            border-top: 1px solid var(--border);
             margin: 3rem 0;
         }
 
@@ -248,19 +244,33 @@
             align-items: center;
             gap: 0.6rem;
             padding: 0.85rem 1.5rem;
-            border-radius: 10px;
+            border-radius: 8px;
             font-weight: 600;
             text-decoration: none;
             font-size: 0.95rem;
-            transition: all 0.3s ease;
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            color: var(--text-primary);
+            transition: border-color var(--duration-fast) var(--ease);
+            background: transparent;
+            border: 1px solid rgba(240, 244, 248, 0.16);
+            color: var(--ink);
         }
 
         .releases-btn:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.2);
+            border-color: rgba(240, 244, 248, 0.6);
+        }
+
+        .req-heading {
+            color: var(--ink);
+            font-size: 1rem;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .future-platforms-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--ink);
         }
 
         @media (max-width: 600px) {
@@ -289,24 +299,20 @@
 
 <body>
 
-    <!-- Abstract Background -->
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-
     <!-- Navbar -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">
+            <a href="index.html" class="logo">
                 <img src="logo.png" alt="Kinetix Logo" class="logo-img">
-                <a href="index.html" class="logo-text" style="text-decoration:none;">Kinetix</a>
-            </div>
+                <span class="logo-text">Kinetix</span>
+            </a>
             <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMobileMenu()">
                 <span></span><span></span><span></span>
             </button>
             <div class="nav-links" id="nav-links">
                 <a href="index.html#features" data-en="Features" data-it="Caratteristiche">Features</a>
                 <a href="index.html#roadmap" data-en="Roadmap" data-it="Roadmap">Roadmap</a>
-                <a href="install.html" style="color: var(--accent-blue);" data-en="Install"
+                <a href="install.html" style="color: var(--cyan);" data-en="Install"
                     data-it="Installazione">Install</a>
                 <a href="https://github.com/MisterY3515/Kinetix" target="_blank" data-en="Repository"
                     data-it="Repository">Repository</a>
@@ -360,11 +366,11 @@
                 </p>
                 <ol class="install-steps">
                     <li data-step="1."
-                        data-en="Download <code>KinetixInstaller.exe</code> from the latest <a href='https://github.com/MisterY3515/Kinetix/releases' target='_blank' style='color:var(--accent-blue)'>GitHub Release</a>."
-                        data-it="Scarica <code>KinetixInstaller.exe</code> dall'ultima <a href='https://github.com/MisterY3515/Kinetix/releases' target='_blank' style='color:var(--accent-blue)'>Release su GitHub</a>.">
+                        data-en="Download <code>KinetixInstaller.exe</code> from the latest <a href='https://github.com/MisterY3515/Kinetix/releases' target='_blank' style='color:var(--cyan)'>GitHub Release</a>."
+                        data-it="Scarica <code>KinetixInstaller.exe</code> dall'ultima <a href='https://github.com/MisterY3515/Kinetix/releases' target='_blank' style='color:var(--cyan)'>Release su GitHub</a>.">
                         Download <code>KinetixInstaller.exe</code> from the latest <a
                             href="https://github.com/MisterY3515/Kinetix/releases" target="_blank"
-                            style="color:var(--accent-blue)">GitHub Release</a>.
+                            style="color:var(--cyan)">GitHub Release</a>.
                     </li>
                     <li data-step="2." data-en="Run the installer. It will guide you through the setup process."
                         data-it="Avvia l'installer. Ti guiderà attraverso il processo di installazione.">
@@ -377,7 +383,7 @@
                 </ol>
                 <div class="code-block"><code>kivm version</code></div>
 
-                <h4 style="color: #FFF; margin-top: 1.5rem; margin-bottom: 0.75rem;" data-en="System Requirements"
+                <h4 class="req-heading" data-en="System Requirements"
                     data-it="Requisiti di Sistema">System Requirements</h4>
                 <div class="requirements-grid">
                     <div class="req-item">
@@ -454,7 +460,7 @@ cargo build --release</code></div>
                 <div class="code-block"><code>sudo cp target/release/kivm /usr/local/bin/
 kivm version</code></div>
 
-                <h4 style="color: #FFF; margin-top: 1.5rem; margin-bottom: 0.75rem;" data-en="System Requirements"
+                <h4 class="req-heading" data-en="System Requirements"
                     data-it="Requisiti di Sistema">System Requirements</h4>
                 <div class="requirements-grid">
                     <div class="req-item">
@@ -506,7 +512,7 @@ cargo build --release</code></div>
                 <div class="code-block"><code>sudo cp target/release/kivm /usr/local/bin/
 kivm version</code></div>
 
-                <h4 style="color: #FFF; margin-top: 1.5rem; margin-bottom: 0.75rem;" data-en="System Requirements"
+                <h4 class="req-heading" data-en="System Requirements"
                     data-it="Requisiti di Sistema">System Requirements</h4>
                 <div class="requirements-grid">
                     <div class="req-item">
@@ -523,7 +529,7 @@ kivm version</code></div>
             <hr class="section-divider">
 
             <!-- ====== FUTURE PLATFORMS ====== -->
-            <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1.5rem; color: #FFF;"
+            <h2 class="future-platforms-title"
                 data-en="Future Platforms" data-it="Piattaforme Future">Future Platforms</h2>
 
             <div class="platform-card" style="opacity: 0.6;">
@@ -558,8 +564,7 @@ kivm version</code></div>
     <footer>
         <div class="footer-content">
             <div class="footer-logo">
-                <img src="logo.png" alt="Logo" class="logo-img"
-                    style="height:24px; vertical-align:middle; margin-right:8px;">Kinetix
+                <img src="logo.png" alt="Logo" class="footer-logo-img">Kinetix
             </div>
             <p data-en="© 2026 MisterY3515. All rights reserved."
                 data-it="© 2026 MisterY3515. Tutti i diritti riservati.">© 2026 MisterY3515. All rights reserved.</p>

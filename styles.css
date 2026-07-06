@@ -1,12 +1,20 @@
 /* Base & Resets */
 :root {
-    --bg-color: #05050A;
-    --text-primary: #F0F4F8;
-    --text-secondary: #8B9BB4;
-    --accent-blue: #00F0FF;
-    --accent-purple: #7000FF;
-    --glass-bg: rgba(255, 255, 255, 0.03);
-    --glass-border: rgba(255, 255, 255, 0.08);
+    --void: #05050A;
+    --surface: #0D0D14;
+    --ink: #F0F4F8;
+    --muted: #8B9BB4;
+    --code-text: #C9D1D9;
+    --cyan: #00F0FF;
+    --violet: #7000FF;
+    --success: #27C93F;
+    --warning: #FFBD2E;
+    --danger: #FF5F56;
+    --border: rgba(240, 244, 248, 0.08);
+    --border-strong: rgba(240, 244, 248, 0.2);
+    --ease: cubic-bezier(0.25, 1, 0.5, 1);
+    --duration-fast: 180ms;
+    --duration-reveal: 600ms;
 }
 
 * {
@@ -20,8 +28,8 @@ html {
 }
 
 body {
-    background-color: var(--bg-color);
-    color: var(--text-primary);
+    background-color: var(--void);
+    color: var(--ink);
     font-family: 'Inter', -apple-system, sans-serif;
     line-height: 1.6;
     overflow-x: hidden;
@@ -37,41 +45,16 @@ body {
     flex-direction: column;
 }
 
-/* Background Blobs */
-.blob {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(120px);
-    z-index: -1;
-    opacity: 0.5;
+a {
+    color: inherit;
 }
 
-.blob-1 {
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, var(--accent-purple), transparent 70%);
-    top: -100px;
-    left: -200px;
-    animation: float 14s infinite alternate;
-}
-
-.blob-2 {
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, var(--accent-blue), transparent 70%);
-    bottom: -100px;
-    right: -100px;
-    animation: float 18s infinite alternate-reverse;
-}
-
-@keyframes float {
-    0% {
-        transform: translateY(0) scale(1);
-    }
-
-    100% {
-        transform: translateY(40px) scale(1.05);
-    }
+/* Focus visibility (WCAG AA) */
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 2px;
+    border-radius: 4px;
 }
 
 /* Navbar */
@@ -82,7 +65,7 @@ body {
     padding: 1.5rem 0;
     background: rgba(5, 5, 10, 0.7);
     backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--glass-border);
+    border-bottom: 1px solid var(--border);
     z-index: 1000;
 }
 
@@ -99,23 +82,22 @@ body {
     display: flex;
     align-items: center;
     gap: 12px;
+    text-decoration: none;
+    color: inherit;
 }
 
 .logo-img {
     height: 32px;
     width: auto;
     border-radius: 4px;
-    /* nel caso il logo avesse spigoli vivi */
 }
 
 .logo-text {
     font-weight: 800;
     font-size: 1.5rem;
-    letter-spacing: -0.5px;
-    background: linear-gradient(90deg, #FFF, var(--accent-blue));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    text-decoration: none;
 }
 
 .nav-links {
@@ -125,28 +107,28 @@ body {
 }
 
 .nav-links a {
-    color: var(--text-secondary);
+    color: var(--muted);
     text-decoration: none;
     font-weight: 600;
     font-size: 0.95rem;
-    transition: color 0.3s ease;
+    transition: color var(--duration-fast) var(--ease);
 }
 
 .nav-links a:hover {
-    color: var(--text-primary);
+    color: var(--ink);
 }
 
 .nav-btn {
     padding: 0.6rem 1.2rem;
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
+    background: transparent;
+    border: 1px solid var(--border-strong);
     border-radius: 8px;
-    color: #FFF !important;
+    color: var(--ink) !important;
+    transition: border-color var(--duration-fast) var(--ease);
 }
 
 .nav-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+    border-color: rgba(240, 244, 248, 0.5);
 }
 
 /* Language Switcher */
@@ -156,31 +138,31 @@ body {
     gap: 8px;
     margin-left: 1rem;
     padding-left: 1rem;
-    border-left: 1px solid var(--glass-border);
+    border-left: 1px solid var(--border);
 }
 
 .lang-switch button {
     background: transparent;
     border: none;
-    color: var(--text-secondary);
+    color: var(--muted);
     font-family: inherit;
     font-weight: 600;
     font-size: 0.9rem;
+    padding: 10px 4px;
     cursor: pointer;
-    transition: color 0.3s ease;
+    transition: color var(--duration-fast) var(--ease);
 }
 
 .lang-switch button:hover {
-    color: #FFF;
+    color: var(--ink);
 }
 
 .lang-switch button.active {
-    color: var(--accent-blue);
-    text-shadow: 0 0 8px rgba(0, 240, 255, 0.4);
+    color: var(--cyan);
 }
 
 .lang-switch span {
-    color: var(--glass-border);
+    color: var(--border);
     font-size: 0.9rem;
 }
 
@@ -188,11 +170,14 @@ body {
 .hamburger {
     display: none;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 5px;
+    min-width: 44px;
+    min-height: 44px;
     background: transparent;
     border: none;
     cursor: pointer;
-    padding: 6px;
     z-index: 1001;
 }
 
@@ -200,9 +185,9 @@ body {
     display: block;
     width: 24px;
     height: 2px;
-    background: var(--text-primary);
+    background: var(--ink);
     border-radius: 2px;
-    transition: all 0.3s ease;
+    transition: transform var(--duration-fast) var(--ease), opacity var(--duration-fast) var(--ease);
 }
 
 .hamburger.open span:nth-child(1) {
@@ -234,34 +219,47 @@ body {
     align-items: flex-start;
 }
 
+.badges-row {
+    display: flex;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
 .badge {
-    background: rgba(0, 240, 255, 0.1);
-    color: var(--accent-blue);
+    display: inline-flex;
+    align-items: center;
+    background: transparent;
+    color: var(--cyan);
     padding: 0.4rem 1rem;
     border-radius: 20px;
-    font-weight: 600;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 400;
     font-size: 0.85rem;
-    margin-bottom: 1.5rem;
-    border: 1px solid rgba(0, 240, 255, 0.2);
+    border: 1px solid rgba(0, 240, 255, 0.3);
+}
+
+.badge.badge-warning {
+    color: var(--warning);
+    border-color: rgba(255, 189, 46, 0.3);
 }
 
 .hero-title {
-    font-size: 4.5rem;
+    font-size: clamp(2.75rem, 6vw, 4.25rem);
     font-weight: 800;
     line-height: 1.1;
-    letter-spacing: -2px;
+    letter-spacing: -0.03em;
     margin-bottom: 1.5rem;
-    background: linear-gradient(135deg, #FFF 0%, #A0B0D0 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--ink);
+    text-wrap: balance;
 }
 
 .hero-subtitle {
     font-size: 1.25rem;
-    color: var(--text-secondary);
+    color: var(--muted);
     margin-bottom: 2.5rem;
     max-width: 500px;
+    text-wrap: pretty;
 }
 
 .cta-group {
@@ -274,41 +272,40 @@ body {
     align-items: center;
     gap: 0.75rem;
     padding: 1rem 1.75rem;
-    border-radius: 12px;
+    border-radius: 8px;
     font-weight: 600;
     text-decoration: none;
     font-size: 1rem;
-    transition: all 0.3s ease;
+    transition: transform var(--duration-fast) var(--ease), box-shadow var(--duration-fast) var(--ease), border-color var(--duration-fast) var(--ease);
     cursor: pointer;
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
-    color: #FFF;
+    background: var(--cyan);
+    color: var(--void);
     border: none;
-    box-shadow: 0 10px 30px rgba(112, 0, 255, 0.3);
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 15px 40px rgba(0, 240, 255, 0.4);
+    box-shadow: 0 10px 30px rgba(0, 240, 255, 0.25);
 }
 
 .btn-secondary {
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    color: var(--text-primary);
+    background: transparent;
+    border: 1px solid rgba(240, 244, 248, 0.16);
+    color: var(--ink);
 }
 
 .btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(240, 244, 248, 0.6);
 }
 
-/* Base Code Window */
+/* Code Showcase — the one earned "elevated" surface on the page */
 .code-showcase {
-    background: #0D0D14;
+    background: var(--surface);
     border-radius: 12px;
-    border: 1px solid var(--glass-border);
+    border: 1px solid var(--border);
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
     overflow: hidden;
     position: relative;
@@ -335,15 +332,15 @@ body {
 }
 
 .dot.red {
-    background: #FF5F56;
+    background: var(--danger);
 }
 
 .dot.yellow {
-    background: #FFBD2E;
+    background: var(--warning);
 }
 
 .dot.green {
-    background: #27C93F;
+    background: var(--success);
 }
 
 .title {
@@ -352,7 +349,6 @@ body {
     font-size: 0.85rem;
     font-weight: 600;
     transform: translateX(-20px);
-    /* Center offset compensation */
 }
 
 .window-body {
@@ -364,7 +360,7 @@ body {
     margin: 0;
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.95rem;
-    color: #C9D1D9;
+    color: var(--code-text);
 }
 
 .keyword {
@@ -401,23 +397,24 @@ body {
 }
 
 .section-title {
-    text-align: center;
-    margin-bottom: 4rem;
+    text-align: left;
+    max-width: 640px;
+    margin-bottom: 3rem;
 }
 
 .section-title h2 {
-    font-size: 2.5rem;
-    font-weight: 800;
-    margin-bottom: 1rem;
-    background: linear-gradient(90deg, #FFF, #8B9BB4);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+    color: var(--ink);
+    text-wrap: balance;
 }
 
 .section-title p {
-    color: var(--text-secondary);
+    color: var(--muted);
     font-size: 1.1rem;
+    max-width: 65ch;
 }
 
 .feature-grid {
@@ -426,36 +423,34 @@ body {
     gap: 2rem;
 }
 
+/* Feature cards — flat by default; the code showcase is the only glass surface */
 .feature-card {
-    padding: 2.5rem 2rem;
-    border-radius: 16px;
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    backdrop-filter: blur(16px);
-    transition: transform 0.3s ease, background 0.3s ease;
-    position: relative;
-    overflow: hidden;
+    padding: 2rem;
+    border-radius: 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    transition: border-color var(--duration-fast) var(--ease), transform var(--duration-fast) var(--ease);
 }
 
 .feature-card:hover {
-    transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.15);
+    border-color: var(--border-strong);
+    transform: translateY(-4px);
 }
 
 .feature-icon {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
+    font-size: 1.75rem;
+    margin-bottom: 1.25rem;
 }
 
 .feature-card h3 {
-    font-size: 1.25rem;
-    margin-bottom: 1rem;
-    color: #FFF;
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--ink);
 }
 
 .feature-card p {
-    color: var(--text-secondary);
+    color: var(--muted);
     font-size: 0.95rem;
 }
 
@@ -473,21 +468,19 @@ body {
     align-items: start;
 }
 
-.glass-panel {
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    backdrop-filter: blur(16px);
+.panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
     border-radius: 16px;
     padding: 2.5rem;
     position: relative;
-    overflow: hidden;
 }
 
-.glass-panel h3 {
+.panel h3 {
     font-size: 1.5rem;
-    color: #FFF;
+    color: var(--ink);
     margin-bottom: 2rem;
-    border-bottom: 1px solid var(--glass-border);
+    border-bottom: 1px solid var(--border);
     padding-bottom: 1rem;
 }
 
@@ -502,11 +495,11 @@ body {
     margin-bottom: 0.5rem;
     font-size: 0.95rem;
     font-weight: 600;
-    color: var(--text-primary);
+    color: var(--ink);
 }
 
 .progress-header .pct {
-    color: var(--accent-blue);
+    color: var(--cyan);
 }
 
 .progress-bar {
@@ -519,25 +512,26 @@ body {
 
 .progress-fill {
     height: 100%;
-    background: linear-gradient(90deg, var(--accent-purple), var(--accent-blue));
+    background: var(--cyan);
     border-radius: 4px;
-    box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
-    transition: width 1s ease-in-out;
 }
 
-.fill-100 {
-    width: 100%;
-    background: #27C93F;
-    box-shadow: 0 0 10px rgba(39, 201, 63, 0.4);
+.progress-fill.fill-100 {
+    background: var(--success);
 }
 
-.fill-85 {
-    width: 85%;
+/* The one place fill color communicates "live right now": a slow, subtle glow pulse. */
+.progress-fill.pulse {
+    animation: pulse-glow 2.4s var(--ease) infinite;
 }
 
-.fill-15 {
-    width: 15%;
-    background: linear-gradient(90deg, #FF5F56, var(--accent-purple));
+@keyframes pulse-glow {
+    0%, 100% {
+        box-shadow: 0 0 4px rgba(0, 240, 255, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 12px rgba(0, 240, 255, 0.7);
+    }
 }
 
 /* Milestones List */
@@ -550,12 +544,12 @@ body {
     position: relative;
     padding-left: 2rem;
     margin-bottom: 1.5rem;
-    color: var(--text-secondary);
+    color: var(--muted);
     font-size: 0.95rem;
 }
 
 .milestone-list li strong {
-    color: #FFF;
+    color: var(--ink);
 }
 
 .milestone-list li::before {
@@ -566,8 +560,8 @@ body {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    border: 2px solid var(--text-secondary);
-    background: var(--bg-color);
+    border: 2px solid var(--muted);
+    background: var(--void);
 }
 
 .milestone-list li::after {
@@ -577,7 +571,7 @@ body {
     top: 20px;
     width: 2px;
     height: calc(100% - 10px);
-    background: var(--glass-border);
+    background: var(--border);
 }
 
 .milestone-list li:last-child::after {
@@ -585,23 +579,22 @@ body {
 }
 
 .milestone-list li.done {
-    color: #C9D1D9;
+    color: var(--code-text);
 }
 
 .milestone-list li.done::before {
-    border-color: #27C93F;
-    background: #27C93F;
-    box-shadow: 0 0 10px rgba(39, 201, 63, 0.4);
+    border-color: var(--success);
+    background: var(--success);
 }
 
 .milestone-list li.active {
-    color: #FFF;
+    color: var(--ink);
 }
 
 .milestone-list li.active::before {
-    border-color: var(--accent-blue);
-    background: var(--accent-blue);
-    box-shadow: 0 0 10px rgba(0, 240, 255, 0.6);
+    border-color: var(--cyan);
+    background: var(--cyan);
+    box-shadow: 0 0 8px rgba(0, 240, 255, 0.6);
 }
 
 /* Expandable Milestone Details */
@@ -626,9 +619,9 @@ body {
     right: 0;
     top: 50%;
     transform: translateY(-50%) rotate(-90deg);
-    transition: transform 0.2s ease;
+    transition: transform var(--duration-fast) var(--ease);
     font-size: 0.8rem;
-    color: var(--accent-blue);
+    color: var(--cyan);
 }
 
 .expandable-item details[open] summary::after {
@@ -638,16 +631,15 @@ body {
 .milestone-sublist {
     margin-top: 14px;
     padding-left: 1rem;
-    color: var(--text-secondary);
+    color: var(--muted);
 }
 
 .milestone-sublist li {
     padding-left: 24px;
     margin-bottom: 8px;
     font-size: 0.9rem;
-    color: var(--text-secondary);
+    color: var(--muted);
     list-style: none;
-    /* Rimuove pallino interno */
     position: relative;
 }
 
@@ -657,7 +649,6 @@ body {
 
 .milestone-list .milestone-sublist li::before {
     content: '⏳';
-    /* Icona WIP task di base */
     position: absolute;
     left: 0;
     top: 0;
@@ -672,16 +663,96 @@ body {
 
 .milestone-list .milestone-sublist li.sub-done::before {
     content: '✅';
-    /* Override Icona Completed task */
 }
 
 .milestone-sublist li.sub-done {
-    color: #C9D1D9;
+    color: var(--code-text);
+}
+
+/* Changelog */
+.changelog {
+    max-width: 1200px;
+    margin: 0 auto 10rem;
+    padding: 0 2rem;
+}
+
+.changelog-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.release-card {
+    padding: 1.5rem 2rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+
+.release-card h3 {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    margin: 0 0 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--ink);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.05rem;
+    font-weight: 400;
+}
+
+.release-card .release-date {
+    font-size: 0.85rem;
+    color: var(--muted);
+    font-weight: 400;
+}
+
+.release-card ul {
+    padding-left: 1.25rem;
+    color: var(--muted);
+}
+
+.release-card li {
+    margin-bottom: 0.6rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.release-card li:last-child {
+    margin-bottom: 0;
+}
+
+.release-card code {
+    background: rgba(255, 255, 255, 0.06);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85em;
+    color: var(--code-text);
+}
+
+/* Reveal-on-scroll (progressive enhancement — see script.js).
+   Content is visible by default; the "pending" state is only ever applied by
+   JS right before observing, and JS itself skips this entirely under
+   prefers-reduced-motion or when IntersectionObserver is unavailable. */
+.reveal-pending {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity var(--duration-reveal) var(--ease) calc(var(--i, 0) * 60ms),
+                transform var(--duration-reveal) var(--ease) calc(var(--i, 0) * 60ms);
+}
+
+.reveal-pending.reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Footer */
 footer {
-    border-top: 1px solid var(--glass-border);
+    border-top: 1px solid var(--border);
     padding: 3rem 0;
     text-align: center;
     background: rgba(5, 5, 10, 0.8);
@@ -692,11 +763,17 @@ footer {
     font-weight: 800;
     font-size: 1.25rem;
     margin-bottom: 0.5rem;
-    color: #FFF;
+    color: var(--ink);
+}
+
+.footer-logo-img {
+    height: 24px;
+    vertical-align: middle;
+    margin-right: 8px;
 }
 
 footer p {
-    color: var(--text-secondary);
+    color: var(--muted);
     font-size: 0.85rem;
 }
 
@@ -712,6 +789,10 @@ footer p {
         align-items: center;
     }
 
+    .hero-subtitle {
+        max-width: 65ch;
+    }
+
     .cta-group {
         justify-content: center;
         flex-direction: column;
@@ -723,8 +804,11 @@ footer p {
         justify-content: center;
     }
 
-    .hero-title {
-        font-size: 3.5rem;
+    .section-title {
+        max-width: none;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .nav-links {
@@ -733,16 +817,15 @@ footer p {
         right: 0;
         width: 280px;
         height: 100dvh;
-        background: rgba(5, 5, 10, 0.95);
-        backdrop-filter: blur(20px);
+        background: var(--void);
         flex-direction: column;
         align-items: flex-start;
         padding: 5rem 2rem 2rem;
         gap: 1.5rem;
         transform: translateX(100%);
-        transition: transform 0.3s ease;
+        transition: transform 300ms var(--ease);
         z-index: 999;
-        border-left: 1px solid var(--glass-border);
+        border-left: 1px solid var(--border);
         display: flex;
     }
 
@@ -766,7 +849,7 @@ footer p {
         padding-left: 0;
         border-left: none;
         padding-top: 0.5rem;
-        border-top: 1px solid var(--glass-border);
+        border-top: 1px solid var(--border);
         width: 100%;
     }
 
@@ -797,19 +880,11 @@ footer p {
         font-size: 1.2rem;
     }
 
-    .section-title h2 {
-        font-size: 1.8rem;
-    }
-
-    .section-title p {
-        font-size: 0.95rem;
-    }
-
-    .glass-panel {
+    .panel {
         padding: 1.5rem;
     }
 
-    .glass-panel h3 {
+    .panel h3 {
         font-size: 1.25rem;
         margin-bottom: 1.5rem;
     }
@@ -851,11 +926,6 @@ footer p {
         padding: 0 1rem;
     }
 
-    .hero-title {
-        font-size: 2.2rem;
-        letter-spacing: -1px;
-    }
-
     .hero-subtitle {
         font-size: 1rem;
     }
@@ -882,21 +952,18 @@ footer p {
     }
 
     .features-section,
-    .progress-section {
+    .progress-section,
+    .changelog {
         padding: 0 1rem;
         margin-bottom: 5rem;
     }
 
-    .section-title h2 {
-        font-size: 1.5rem;
-    }
-
-    .glass-panel {
+    .panel {
         padding: 1.25rem;
         border-radius: 12px;
     }
 
-    .glass-panel h3 {
+    .panel h3 {
         font-size: 1.1rem;
         margin-bottom: 1.25rem;
         padding-bottom: 0.75rem;
@@ -951,5 +1018,26 @@ footer p {
     .cta-group .btn {
         padding: 0.8rem 1.2rem;
         font-size: 0.9rem;
+    }
+}
+
+/* Motion accessibility — always last, always wins */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .reveal-pending {
+        opacity: 1;
+        transform: none;
     }
 }

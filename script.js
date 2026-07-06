@@ -1,18 +1,22 @@
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 // Add subtle mouse-following hover effect to the code showcase window
 const mockupWindow = document.getElementById('mockup');
 
-// Optional: Parallax scaling on scroll for hero title
-window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
-    const heroTitle = document.querySelector('.hero-title');
+// Optional: light parallax on scroll for hero title
+if (!prefersReducedMotion) {
+    window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY;
+        const heroTitle = document.querySelector('.hero-title');
 
-    if (scrollY < 400 && heroTitle) {
-        heroTitle.style.transform = `translateY(${scrollY * 0.15}px)`;
-    }
-});
+        if (scrollY < 400 && heroTitle) {
+            heroTitle.style.transform = `translateY(${scrollY * 0.15}px)`;
+        }
+    });
+}
 
 // Subtle 3D tilt on the code showcase based on mouse movement
-if (mockupWindow) {
+if (mockupWindow && !prefersReducedMotion) {
     mockupWindow.addEventListener('mousemove', (e) => {
         const rect = mockupWindow.getBoundingClientRect();
 
@@ -32,6 +36,40 @@ if (mockupWindow) {
         mockupWindow.style.transform = `scale(1) perspective(1000px) rotateX(0) rotateY(0)`;
         mockupWindow.style.transition = 'transform 0.5s ease-in-out';
     });
+}
+
+// Reveal-on-scroll: progressive enhancement only. Content is fully visible
+// by default in the CSS; the "pending" (hidden) class is applied here, right
+// before observing, so a page with JS disabled or reduced motion never loses
+// content to a reveal that didn't fire.
+function revealOnScroll(elements, { capIndex = Infinity } = {}) {
+    if (prefersReducedMotion || !('IntersectionObserver' in window) || !elements.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('reveal-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+
+    elements.forEach((el, i) => {
+        el.style.setProperty('--i', Math.min(i, capIndex));
+        el.classList.add('reveal-pending');
+        observer.observe(el);
+    });
+
+    // Safety net: the observer only fires once an element's bounding box has
+    // actually been through a layout pass inside the viewport. Some capture
+    // tools (headless full-page screenshots, prerenderers) resize past
+    // content that never gets that pass, which would otherwise strand it at
+    // opacity: 0 forever. Force-reveal anything still pending after a short
+    // delay so nothing ships permanently blank.
+    setTimeout(() => {
+        elements.forEach((el) => el.classList.add('reveal-visible'));
+        observer.disconnect();
+    }, 1200);
 }
 
 // Localization Logic
@@ -76,24 +114,27 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    revealOnScroll(document.querySelectorAll('.feature-card, .panel'));
     renderChangelog();
 });
 
 // Render Changelog
 function renderChangelog() {
     const container = document.getElementById('changelog-container');
-    if (!container || !window.App || !window.App.changelog) return;
+    if (!container || typeof App === 'undefined' || !App.changelog) return;
 
     let html = '';
     App.changelog.forEach(release => {
-        html += `<div class="release-card" style="margin-bottom: 24px; padding: 20px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px;">
-            <h3 style="margin-top: 0; color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 8px; margin-bottom: 16px;">
-                ${release.version} <span style="float: right; font-size: 0.85em; color: var(--text-light);">${release.date}</span>
-            </h3>
-            <ul style="padding-left: 20px;">
-                ${release.changes.map(c => `<li style="margin-bottom: 8px;">${c}</li>`).join('')}
+        html += `<div class="release-card">
+            <h3>${release.version} <span class="release-date">${release.date}</span></h3>
+            <ul>
+                ${release.changes.map(c => `<li>${c}</li>`).join('')}
             </ul>
         </div>`;
     });
     container.innerHTML = html;
+
+    // Cap the stagger at 8 items so a 35+ release history doesn't queue a
+    // multi-second reveal delay for whatever's furthest down the page.
+    revealOnScroll(container.querySelectorAll('.release-card'), { capIndex: 8 });
 }
