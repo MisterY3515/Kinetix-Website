@@ -12,6 +12,7 @@
     --danger: #FF5F56;
     --border: rgba(240, 244, 248, 0.08);
     --border-strong: rgba(240, 244, 248, 0.2);
+    --fill-subtle: rgba(255, 255, 255, 0.06);
     --ease: cubic-bezier(0.25, 1, 0.5, 1);
     --duration-fast: 180ms;
     --duration-reveal: 600ms;
@@ -51,7 +52,8 @@ a {
 
 /* Focus visibility (WCAG AA) */
 a:focus-visible,
-button:focus-visible {
+button:focus-visible,
+summary:focus-visible {
     outline: 2px solid var(--cyan);
     outline-offset: 2px;
     border-radius: 4px;
@@ -361,6 +363,7 @@ button:focus-visible {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.95rem;
     color: var(--code-text);
+    overflow-x: auto;
 }
 
 .keyword {
@@ -454,6 +457,23 @@ button:focus-visible {
     font-size: 0.95rem;
 }
 
+.feature-proof {
+    margin: 1.25rem 0 0;
+    padding: 0.9rem 1rem;
+    background: var(--void);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow-x: auto;
+}
+
+.feature-proof code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: var(--code-text);
+    white-space: pre;
+}
+
 /* Progress & Roadmap Section */
 .progress-section {
     max-width: 1200px;
@@ -482,6 +502,18 @@ button:focus-visible {
     margin-bottom: 2rem;
     border-bottom: 1px solid var(--border);
     padding-bottom: 1rem;
+}
+
+.panel h3:has(+ .panel-caption) {
+    margin-bottom: 0.75rem;
+}
+
+.panel-caption {
+    color: var(--muted);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin-bottom: 1.75rem;
+    max-width: 46ch;
 }
 
 /* Progress Bars */
@@ -682,6 +714,30 @@ button:focus-visible {
     gap: 1.5rem;
 }
 
+.changelog-group summary {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--ink);
+    padding-bottom: 0.75rem;
+    padding-right: 20px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 1.5rem;
+}
+
+.changelog-group-count {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 400;
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-left: 0.6rem;
+}
+
+.changelog-group-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
 .release-card {
     padding: 1.5rem 2rem;
     background: var(--surface);
@@ -726,7 +782,7 @@ button:focus-visible {
 }
 
 .release-card code {
-    background: rgba(255, 255, 255, 0.06);
+    background: var(--fill-subtle);
     padding: 2px 6px;
     border-radius: 4px;
     font-family: 'JetBrains Mono', monospace;
@@ -1018,6 +1074,300 @@ footer p {
     .cta-group .btn {
         padding: 0.8rem 1.2rem;
         font-size: 0.9rem;
+    }
+}
+
+/* Install Page */
+.install-page {
+    max-width: 900px;
+    margin: 8rem auto 4rem;
+    padding: 0 2rem;
+}
+
+.install-page .page-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.5rem;
+    color: var(--ink);
+}
+
+.install-page .page-subtitle {
+    color: var(--muted);
+    font-size: 1.15rem;
+    margin-bottom: 3rem;
+}
+
+.notice-box {
+    background: rgba(255, 189, 46, 0.08);
+    border: 1px solid rgba(255, 189, 46, 0.25);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.notice-box .notice-icon {
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.notice-box p {
+    color: var(--warning);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.platform-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem 2.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+    transition: border-color var(--duration-fast) var(--ease);
+}
+
+.platform-card:hover {
+    border-color: var(--border-strong);
+}
+
+.platform-card .platform-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 1.25rem;
+}
+
+.platform-card .platform-icon {
+    font-size: 2rem;
+}
+
+.platform-card .platform-name {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--ink);
+}
+
+.platform-card .platform-tag {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    margin-left: auto;
+}
+
+.tag-recommended {
+    background: rgba(39, 201, 63, 0.15);
+    color: var(--success);
+    border: 1px solid rgba(39, 201, 63, 0.3);
+}
+
+.tag-planned {
+    background: rgba(139, 155, 180, 0.1);
+    color: var(--muted);
+    border: 1px solid rgba(139, 155, 180, 0.2);
+}
+
+.platform-card p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+.platform-card p:last-child {
+    margin-bottom: 0;
+}
+
+.install-steps {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+}
+
+.install-steps li {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 14px;
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.install-steps li::before {
+    content: attr(data-step);
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--cyan);
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+.install-steps li code {
+    background: var(--fill-subtle);
+    padding: 2px 8px;
+    border-radius: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--code-text);
+}
+
+.code-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin: 1rem 0;
+    overflow-x: auto;
+}
+
+.code-block code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.88rem;
+    color: var(--code-text);
+    white-space: pre;
+}
+
+.requirements-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.req-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.req-item .req-label {
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.req-item .req-value {
+    color: var(--ink);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+/* Same single-accent CTA as the homepage primary button */
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: transform var(--duration-fast) var(--ease), box-shadow var(--duration-fast) var(--ease);
+    margin-top: 0.5rem;
+    background: var(--cyan);
+    color: var(--void);
+    border: none;
+}
+
+.download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 240, 255, 0.25);
+}
+
+.section-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 3rem 0;
+}
+
+.btn-group {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+}
+
+.releases-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.85rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: border-color var(--duration-fast) var(--ease);
+    background: transparent;
+    border: 1px solid rgba(240, 244, 248, 0.16);
+    color: var(--ink);
+}
+
+.releases-btn:hover {
+    border-color: rgba(240, 244, 248, 0.6);
+}
+
+.req-heading {
+    color: var(--ink);
+    font-size: 1rem;
+    font-weight: 700;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.future-platforms-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--ink);
+}
+
+.source-toggle {
+    margin-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    padding-top: 1.25rem;
+}
+
+.source-toggle summary {
+    font-weight: 600;
+    color: var(--ink);
+    font-size: 1rem;
+}
+
+.source-toggle .install-steps,
+.source-toggle .requirements-grid,
+.source-toggle>p {
+    margin-top: 1rem;
+}
+
+@media (max-width: 600px) {
+    .install-page .page-title {
+        font-size: 2rem;
+    }
+
+    .platform-card {
+        padding: 1.5rem;
+    }
+
+    .platform-card .platform-header {
+        flex-wrap: wrap;
+    }
+
+    .platform-card .platform-tag {
+        margin-left: 0;
+    }
+
+    .requirements-grid {
+        grid-template-columns: 1fr;
     }
 }
 

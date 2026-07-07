@@ -119,18 +119,44 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Render Changelog
+const MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'];
+
 function renderChangelog() {
     const container = document.getElementById('changelog-container');
     if (!container || typeof App === 'undefined' || !App.changelog) return;
 
-    let html = '';
+    // Group by year-month so a growing release history stays scannable: the
+    // newest month is expanded by default, older months collapse behind a
+    // single click instead of scrolling past dozens of entries.
+    const groups = [];
+    const groupByKey = new Map();
     App.changelog.forEach(release => {
-        html += `<div class="release-card">
+        const key = release.date.slice(0, 7); // "YYYY-MM"
+        let group = groupByKey.get(key);
+        if (!group) {
+            const [year, month] = key.split('-').map(Number);
+            group = { label: `${MONTH_NAMES[month - 1]} ${year}`, releases: [] };
+            groupByKey.set(key, group);
+            groups.push(group);
+        }
+        group.releases.push(release);
+    });
+
+    let html = '';
+    groups.forEach((group, index) => {
+        const releaseWord = group.releases.length === 1 ? 'release' : 'releases';
+        const cards = group.releases.map(release => `<div class="release-card">
             <h3>${release.version} <span class="release-date">${release.date}</span></h3>
             <ul>
                 ${release.changes.map(c => `<li>${c}</li>`).join('')}
             </ul>
-        </div>`;
+        </div>`).join('');
+
+        html += `<details class="changelog-group expandable-item"${index === 0 ? ' open' : ''}>
+            <summary>${group.label} <span class="changelog-group-count">${group.releases.length} ${releaseWord}</span></summary>
+            <div class="changelog-group-body">${cards}</div>
+        </details>`;
     });
     container.innerHTML = html;
 

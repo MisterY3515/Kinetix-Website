@@ -134,6 +134,9 @@
                         data-it="Validazione prestiti basata su AST. Addio race conditions e alias nascosti in fase di compilazione, senza lifetimes complessi.">
                         Strict AST-based borrow validation. Say goodbye to race conditions and hidden aliases during
                         compile-time without complex lifetimes.</p>
+                    <pre class="feature-proof"><code><span class="keyword">let</span> a = data
+<span class="keyword">let</span> b = a
+println(a)  <span class="comment">// error: use after move</span></code></pre>
                 </div>
 
                 <div class="feature-card">
@@ -144,6 +147,9 @@
                         A native frame scheduler built right into the Virtual Machine. State mutations trigger
                         zero-overhead
                         cached effects via topological sort.</p>
+                    <pre class="feature-proof"><code><span class="keyword">state</span> x = <span class="number">2</span>
+<span class="keyword">state</span> y = <span class="number">3</span>
+<span class="keyword">computed</span> total = x + y  <span class="comment">// re-runs only when x or y change</span></code></pre>
                 </div>
 
                 <div class="feature-card">
@@ -153,6 +159,10 @@
                         data-it="Applicazione sandbox a livello di compilazione. Accessi a rete o FS verificati prima ancora di emettere il bytecode.">
                         Sandbox Enforcement at compile level. Functions inherently declare side-effects. Network and FS
                         access checked before the bytecode is even emitted.</p>
+                    <pre class="feature-proof"><code><span class="keyword">fn</span> <span class="function">sync</span>() {
+    <span class="comment">// touches network + filesystem</span>
+}
+<span class="comment">// capabilities inferred — checked before bytecode is emitted</span></code></pre>
                 </div>
 
                 <div class="feature-card">
@@ -162,6 +172,9 @@
                         data-it="Verifica deallocazione deterministica e bridge LLVM. Performance scalabili in rigido ordine O(n) sotto sforzo senza lag gc.">
                         Deterministic Drop Order Verification and LLVM native bridging. Predictable performance scaling
                         strictly O(n) under load.</p>
+                    <pre class="feature-proof"><code>{
+    <span class="keyword">let</span> conn = Connection { }
+}  <span class="comment">// `conn` dropped here — deterministic, no GC pause</span></code></pre>
                 </div>
 
             </div>
@@ -182,6 +195,11 @@
                 <!-- Completion Stats -->
                 <div class="completion-stats panel">
                     <h3 data-en="Global Completion" data-it="Completamento Globale">Global Completion</h3>
+                    <p class="panel-caption"
+                        data-en="Tracks features implemented per phase, not hardening — the changelog below records fixes that landed after each phase's initial pass."
+                        data-it="Misura le funzionalità implementate per fase, non l'hardening — il changelog qui sotto registra le correzioni arrivate dopo il primo passaggio di ogni fase.">
+                        Tracks features implemented per phase, not hardening — the changelog below records fixes
+                        that landed after each phase's initial pass.</p>
 
                     <div class="progress-item">
                         <div class="progress-header">
