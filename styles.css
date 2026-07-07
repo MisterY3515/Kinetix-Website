@@ -215,6 +215,46 @@ summary:focus-visible {
     align-items: center;
 }
 
+/* Hero entrance — the one signature page-load choreography (brand register:
+   one well-rehearsed entrance beats scattered micro-interactions). Pure CSS,
+   so it runs with no JS dependency and needs no reveal-pending safety net;
+   the global prefers-reduced-motion block below collapses it to instant. */
+@keyframes hero-enter {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero .badges-row,
+.hero-title,
+.hero-subtitle,
+.hero .cta-group,
+.code-showcase {
+    animation: hero-enter 700ms var(--ease) both;
+}
+
+.hero-title {
+    animation-delay: 90ms;
+}
+
+.hero-subtitle {
+    animation-delay: 180ms;
+}
+
+.hero .cta-group {
+    animation-delay: 270ms;
+}
+
+.code-showcase {
+    animation-delay: 220ms;
+}
+
 .hero-content {
     display: flex;
     flex-direction: column;
