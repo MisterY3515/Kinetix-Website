@@ -1,5 +1,16 @@
 App.changelog = [
     {
+        version: "v0.0.9 (37)",
+        date: "2026-07-07",
+        changes: [
+            "<b>LLVM Native Backend Resurrected:</b> The <code>--native</code> compilation path (<code>--features llvm</code>) had not actually compiled since Phase 3 — 16 API-drift errors against modern LLVM/inkwell were fixed. The legacy LLVM Pass Manager (removed upstream in LLVM ≥17) was replaced with the New Pass Manager, making the O2 baseline and optional <code>--o3</code> real.",
+            "<b>Real Link Step:</b> <code>--native</code> previously only emitted an orphan <code>.o</code> file with no way to produce a runnable executable. It now invokes <code>clang</code> to link a real binary (still emits <code>.o</code> only if the requested output ends in <code>.o</code>).",
+            "<b>Symbol Stripping:</b> <code>--strip</code> now actually strips symbols via the system <code>strip</code> tool post-link (the linker's own <code>-s</code> flag is a documented no-op on macOS/ld64).",
+            "<b>Dense Opcode Dispatch:</b> <code>Opcode</code> discriminants in the bytecode VM are now dense and sequential instead of sparsely banded, letting the compiler lower the VM's dispatch <code>match</code> into a full jump table instead of a sparse switch.",
+            "<b>Compiler Optimization:</b> Confirmed redundant load elimination (shipped in Build 35) closes out the \"Eliminate redundant loads\" optimization target."
+        ]
+    },
+    {
         version: "v0.0.9 (36)",
         date: "2026-03-08",
         changes: [
