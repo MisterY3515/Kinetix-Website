@@ -387,7 +387,7 @@ summary:focus-visible {
 
 .title {
     margin: 0 auto;
-    color: #666;
+    color: var(--muted);
     font-size: 0.85rem;
     font-weight: 600;
     transform: translateX(-20px);

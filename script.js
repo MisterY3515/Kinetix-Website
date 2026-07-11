@@ -88,6 +88,16 @@ function setLang(lang) {
             el.innerHTML = el.dataset[lang];
         }
     });
+
+    localStorage.setItem('kinetix-lang', lang);
+}
+
+// Restore language preference on navigation between pages. Runs synchronously
+// (script tag sits at the end of <body>, after the elements setLang needs),
+// so the swap happens before first paint with no flash of the wrong language.
+const savedLang = localStorage.getItem('kinetix-lang');
+if (savedLang === 'it') {
+    setLang('it');
 }
 
 // Mobile Hamburger Menu Toggle
